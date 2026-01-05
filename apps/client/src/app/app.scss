@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  height: 100vh;
+
+  .header {
+    background-color: pink;
+    width: 100%;
+  }
+
+  .content {
+    height: 1200px;
+    background-color: blue;
+  }
+}

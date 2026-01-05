@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {},
 })
 export class App {
   protected title = 'client';

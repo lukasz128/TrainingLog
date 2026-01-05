@@ -3,6 +3,8 @@
 # compiled output
 dist
 tmp
+ios
+android
 /out-tsc
 
 # dependencies
