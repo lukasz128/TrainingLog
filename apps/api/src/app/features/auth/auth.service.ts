@@ -2,8 +2,8 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { LoginCredentials, RegisterCredentials } from './auth.controller';
 import { User } from './auth.entity';
+import { LoginCredentials, RegisterCredentials } from './auth.types';
 
 @Injectable()
 export class AuthService {

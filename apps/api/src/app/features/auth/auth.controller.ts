@@ -1,17 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
-
-export interface LoginCredentials {
-  email: string;
-  password: string;
-}
-
-export interface RegisterCredentials {
-  email: string;
-  password: string;
-}
-
-const db: LoginCredentials[] = [{ email: 'admin@admin', password: 'admin' }];
+import { LoginCredentials, RegisterCredentials } from './auth.types';
 
 @Controller('auth')
 export class AuthController {
