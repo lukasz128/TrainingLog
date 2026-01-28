@@ -1,0 +1,20 @@
+@if (isLabelChildActive()) {
+  @let isError = isErrorActive();
+  <header class="">
+    <label [for]="inputId">
+      <ng-content select="ui-label" />
+
+      @if (isError) {
+        <span animate.enter="enter-animation"> &nbsp;* </span>
+      }
+    </label>
+
+    <!-- @if (isError) { -->
+    <span animate.enter="enter-animation">
+      <ng-content select="ui-form-error" />
+    </span>
+    <!-- } -->
+  </header>
+}
+
+<ng-content select="input[uiInput]" />

@@ -1,1 +1,1 @@
-export * from './lib/ui/ui';
+export const mock = true;

@@ -2,11 +2,28 @@
   "name": "ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ui/src",
-  "prefix": "lib",
+  "prefix": "ui",
   "projectType": "library",
-  "tags": [],
+  "tags": ["type:ui"],
   "experimentalZoneless": true,
   "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "dependsOn": ["build"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/ui/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ui/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ui/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
@@ -24,7 +41,11 @@
         "port": 4400,
         "configDir": "libs/ui/.storybook",
         "browserTarget": "ui:build-storybook",
-        "compodoc": false
+        "compodoc": false,
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/ui/src/styles"]
+        },
+        "styles": ["libs/ui/src/styles/index.scss"]
       },
       "configurations": {
         "ci": {
@@ -39,7 +60,8 @@
         "outputDir": "dist/storybook/ui",
         "configDir": "libs/ui/.storybook",
         "browserTarget": "ui:build-storybook",
-        "compodoc": false
+        "compodoc": false,
+        "styles": ["libs/ui/src/styles/config/tailwind.scss"]
       },
       "configurations": {
         "ci": {
