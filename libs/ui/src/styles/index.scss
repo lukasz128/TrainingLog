@@ -1,0 +1,20 @@
+@forward './config/fonts';
+@forward './utils';
+
+:root {
+  --spacing-safe-top: env(safe-area-inset-top);
+  --spacing-safe-bottom: env(safe-area-inset-bottom);
+  --spacing-safe-left: env(safe-area-inset-left);
+  --spacing-safe-right: env(safe-area-inset-right);
+
+  --color-black: #000;
+
+  --color-white-400: #ffffff80;
+  --color-white: #fff;
+
+  --color-primary: #111;
+  --color-accent: #f7ebec;
+
+  --color-error-400: #ff000060;
+  --color-error: #ff0000;
+}

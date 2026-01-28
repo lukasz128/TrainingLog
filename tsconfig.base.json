@@ -15,7 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "ui": ["libs/ui/src/index.ts"]
+      "ui": ["libs/ui/src/index.ts"],
+      "auth": ["libs/client/feature/auth/src/index.ts"],
+      "ui/form-field": ["libs/ui/form-field/src/index.ts"],
+      "ui/common": ["libs/ui/common/src/index.ts"],
+      "ui/input": ["libs/ui/input/src/index.ts"],
+      "ui/button": ["libs/ui/button/src/index.ts"],
+      "auth/ui": ["libs/client/feature/auth/ui/src/index.ts"],
+      "login/ui": ["libs/client/feature/auth/login/ui/src/index.ts"],
+      "register/ui": ["libs/client/feature/auth/register/ui/src/index.ts"],
+      "ui/data-access": ["libs/client/feature/auth/data-access/src/index.ts"],
+      "dashboard": ["libs/client/feature/dashboard/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

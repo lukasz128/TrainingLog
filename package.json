@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "start:ios": "npx cap run ios -l",
-    "start:client": "npx nx serve client --port 3000 --host 0.0.0.0"
+    "start": "npx nx serve client --port 3000 --host 0.0.0.0",
+    "storybook:ui": "npx nx storybook ui"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~21.0.0",
@@ -33,6 +34,7 @@
     "@nx/web": "22.3.3",
     "@nx/webpack": "22.3.3",
     "@schematics/angular": "~21.0.0",
+    "@storybook/addon-styling-webpack": "^3.0.0",
     "@storybook/angular": "10.1.11",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
@@ -76,14 +78,18 @@
     "@capacitor/core": "^8.0.0",
     "@capacitor/ios": "^8.0.0",
     "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.0",
+    "@nestjs/jwt": "^11.0.2",
     "@nestjs/platform-express": "^11.0.0",
-    "@tailwindcss/postcss": "^4.1.18",
+    "@nestjs/typeorm": "^11.0.0",
     "axios": "^1.6.0",
     "express": "^4.21.2",
+    "pg": "^8.17.2",
     "postcss": "^8.5.6",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.0",
-    "tailwindcss": "^4.1.18"
+    "typeorm": "^0.3.28",
+    "uuid": "^13.0.0"
   }
 }
