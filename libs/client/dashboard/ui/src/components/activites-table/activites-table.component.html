@@ -1,0 +1,58 @@
+<ui-table [data]="rows()" [columns]="columns" [columnSizes]="columnSizes">
+  <tr *uiHeaderRowDef="columns"></tr>
+  <tr *uiRowDef="let row; columns: columns" uiRipple></tr>
+
+  <ng-container uiColumnDef="date">
+    <ng-template uiHeaderCellDef>
+      <!-- <svg
+        width="22"
+        height="22"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+        <rect x="7" y="14" width="3" height="3"></rect>
+        <rect x="12" y="14" width="3" height="3"></rect>
+      </svg> -->
+      <i uiIcon="date"></i>
+    </ng-template>
+    <ng-template uiCellDef let-row>{{ row.date }}</ng-template>
+  </ng-container>
+
+  <ng-container uiColumnDef="time">
+    <ng-template uiHeaderCellDef>
+      <i uiIcon="time"></i>
+    </ng-template>
+    <ng-template uiCellDef let-row>{{ row.time }}</ng-template>
+  </ng-container>
+
+  <ng-container uiColumnDef="title">
+    <ng-template uiHeaderCellDef>
+      <i uiIcon="lightning"></i>
+    </ng-template>
+    <ng-template uiCellDef let-row>{{ row.title }}</ng-template>
+  </ng-container>
+
+  <ng-container uiColumnDef="action">
+    <ng-template uiHeaderCellDef>
+      <span class="demo-header-spacer"></span>
+    </ng-template>
+    <ng-template uiCellDef>
+      <svg
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M9 6l6 6-6 6"></path>
+      </svg>
+    </ng-template>
+  </ng-container>
+</ui-table>

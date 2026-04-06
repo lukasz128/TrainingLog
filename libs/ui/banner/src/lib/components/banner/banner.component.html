@@ -1,0 +1,14 @@
+<span class="banner__accent" aria-hidden="true"></span>
+
+<div class="banner__content">
+  <div class="banner__header">
+    <span class="banner__icon" aria-hidden="true">
+      <i [uiIcon]="icon()" size="40px" aria-hidden="true"></i>
+    </span>
+    <span class="banner__title">{{ title() }}</span>
+  </div>
+
+  <div class="banner__body">
+    <ng-content />
+  </div>
+</div>

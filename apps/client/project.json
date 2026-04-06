@@ -24,7 +24,12 @@
           {
             "input": "apps/client/src/assets/icons",
             "glob": "**/*",
-            "output": "assets/icons"
+            "output": "/assets/icons"
+          },
+          {
+            "input": "libs/ui/src/assets/icons",
+            "glob": "**/*",
+            "output": "/assets/icons"
           }
         ],
         "styles": [

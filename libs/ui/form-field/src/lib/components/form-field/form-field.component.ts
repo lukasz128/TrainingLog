@@ -3,14 +3,13 @@ import {
   Component,
   computed,
   contentChild,
-  effect,
   HostListener,
   InjectionToken,
   input,
   ViewEncapsulation,
 } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { EMPTY, filter, map, switchMap, tap } from 'rxjs';
+import { EMPTY, filter, map, switchMap } from 'rxjs';
 import { LabelComponent, RippleDirective, ValueAccessorBase } from 'ui/common';
 
 export interface FormField {
@@ -71,14 +70,9 @@ export class FormFieldComponent implements FormField {
       ),
 
       switchMap((inputChild) => inputChild.control?.statusChanges ?? EMPTY),
-      tap(console.log),
       map((status) => status === 'INVALID'),
     ),
   );
-
-  protected readonly _ = effect(() => {
-    this._inputChild()?.control?.statusChanges.subscribe(console.log);
-  });
 
   protected readonly isLabelChildActive = computed(
     () => this._labelChild() !== undefined,

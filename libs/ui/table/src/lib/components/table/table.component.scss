@@ -1,0 +1,54 @@
+:host {
+  display: block;
+}
+
+.ui-table {
+  width: 100%;
+  color: var(--ui-table-text-color, #f5f5f5);
+  font-family: var(--ui-table-font-family, inherit);
+}
+
+.ui-table-header,
+.ui-table-row {
+  display: grid;
+  grid-template-columns: var(--ui-table-grid, repeat(1, minmax(0, 1fr)));
+  column-gap: var(--ui-table-column-gap, 24px);
+  align-items: center;
+}
+
+.ui-table-header {
+  padding: var(--ui-table-header-padding, 12px 0 16px);
+  border-bottom: 2px solid var(--ui-table-header-divider, rgba(255, 255, 255, 0.65));
+  text-transform: none;
+}
+
+.ui-table-row {
+  padding: var(--ui-table-row-padding, 18px 0);
+}
+
+.ui-table-row + .ui-table-row {
+  border-top: 1px solid var(--ui-table-row-divider, rgba(255, 255, 255, 0));
+}
+
+.ui-table-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-table-cell-gap, 8px);
+  min-width: 0;
+  font-size: var(--ui-table-cell-font-size, 18px);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-table-header .ui-table-cell {
+  font-size: var(--ui-table-header-font-size, 16px);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+.ui-table-cell:last-child {
+  justify-self: end;
+}

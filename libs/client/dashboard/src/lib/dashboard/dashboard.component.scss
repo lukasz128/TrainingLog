@@ -1,0 +1,18 @@
+:host {
+  --global-x-space: 15px;
+  --dashboard-bottom-nav-height: 64px;
+
+  display: block;
+  height: 100%;
+  padding: 0 var(--global-x-space)
+    calc(
+      var(--dashboard-bottom-nav-height) + var(--spacing-safe-bottom, 0px) +
+        12px
+    );
+
+  .title {
+    color: var(--color-white);
+    font-size: 1.9rem;
+    font-weight: 400;
+  }
+}

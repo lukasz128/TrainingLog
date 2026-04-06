@@ -8,8 +8,9 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouteReuseStrategy } from '@angular/router';
 import { appRoutes } from './app.routes';
+import { CustomRouteReuseStrategy } from './utils/custom-router-reuse-strategy.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(appRoutes),
+    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy },
     provideHttpClient(),
   ],
 };

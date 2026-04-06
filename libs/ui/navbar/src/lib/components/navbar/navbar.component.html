@@ -1,0 +1,18 @@
+@for (item of items(); track item.id) {
+  <a
+    role="listitem"
+    class="item reset-link"
+    [class.item--highlighted]="item.highlight"
+    [class.item--active]="item.type === 'action' ? item.isActive : undefined"
+    routerLinkActive="item--active"
+    [routerLink]="item.type === 'link' ? item.href : undefined"
+    (click)="onPoint($event, item)"
+    uiRipple
+  >
+    <i [uiIcon]="item.icon"></i>
+
+    @if (!item.highlight) {
+      {{ item.label }}
+    }
+  </a>
+}

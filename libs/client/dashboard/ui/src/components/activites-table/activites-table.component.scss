@@ -1,0 +1,19 @@
+:host {
+  display: contents;
+
+  ui-table {
+    --ui-table-text-color: #f4f4f4;
+    --ui-table-font-family: 'Montserrat', sans-serif;
+    --ui-table-column-gap: 28px;
+    --ui-table-header-divider: rgba(255, 255, 255, 0.75);
+    --ui-table-row-divider: rgba(255, 255, 255, 0.08);
+    --ui-table-cell-font-size: 20px;
+    --ui-table-header-font-size: 14px;
+  }
+
+  .demo-header-spacer {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+}

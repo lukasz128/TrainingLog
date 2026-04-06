@@ -1,0 +1,48 @@
+<div class="ui-table" [style.--ui-table-grid]="gridTemplateColumns()">
+  @if (showHeader()) {
+    <div
+      class="ui-table-header"
+      role="row"
+      [style.gridTemplateColumns]="gridTemplateColumns()"
+    >
+      @for (column of resolvedColumns(); track column.name()) {
+        <div class="ui-table-cell" role="columnheader">
+          @if (column.headerCellDef()?.template) {
+            <ng-container
+              [ngTemplateOutlet]="column.headerCellDef()?.template"
+              [ngTemplateOutletContext]="{ column: column.name() }"
+            ></ng-container>
+          } @else {
+            {{ column.name() }}
+          }
+        </div>
+      }
+    </div>
+  }
+
+  @for (row of data(); track trackBy()($index, row); let rowIndex = $index) {
+    <div
+      class="ui-table-row"
+      role="row"
+      [style.gridTemplateColumns]="gridTemplateColumns()"
+    >
+      <ng-container [ngTemplateOutlet]="rowDef()?.template">
+        @for (column of resolvedColumns(); track column.name()) {
+          <div class="ui-table-cell" role="cell">
+            @if (column.cellDef()?.template) {
+              <ng-container
+                [ngTemplateOutlet]="column.cellDef()?.template"
+                [ngTemplateOutletContext]="{
+                  $implicit: row,
+                  row: row,
+                  index: rowIndex,
+                  column: column.name(),
+                }"
+              ></ng-container>
+            }
+          </div>
+        }
+      </ng-container>
+    </div>
+  }
+</div>
