@@ -1,0 +1,60 @@
+:host {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  min-height: 64px;
+  padding-bottom: var(--spacing-safe-bottom, 0px);
+  border-top: 3px solid var(--color-white);
+  background-color: var(--color-primary);
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 5px;
+    min-height: 60px;
+
+    color: var(--color-white-300);
+    font-size: 1rem;
+    letter-spacing: -1%;
+    font-weight: 300;
+
+    & i ::ng-deep * {
+      fill: var(--color-white-300);
+    }
+
+    &--highlighted {
+      position: relative;
+      top: -30px;
+      background-color: var(--color-primary);
+
+      border: 3px solid var(--color-white);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+    &:not(.item--highlighted) {
+      flex: 1;
+    }
+
+    &--active {
+      // background-color: red;
+      color: var(--color-white);
+
+      & i ::ng-deep * {
+        fill: var(--color-white);
+      }
+
+      &.item--highlighted {
+        box-shadow: 0 0 12px #ffffff80;
+      }
+    }
+  }
+}

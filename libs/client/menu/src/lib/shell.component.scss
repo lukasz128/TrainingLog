@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  height: 100%;
+
+  text-align: left;
+  margin: 10px;
+
+  .content {
+    height: 100%;
+    padding: 5px 0;
+  }
+
+  .title {
+    color: var(--color-white);
+  }
+
+  .menu-item {
+    text-align: left;
+    text-decoration: none;
+    margin: 10px 0;
+    &--disabled {
+      pointer-events: none;
+    }
+
+    &--last-item {
+      margin-top: 0;
+      margin-bottom: auto;
+    }
+  }
+}

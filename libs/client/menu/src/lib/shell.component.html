@@ -1,0 +1,13 @@
+<div class="content">
+  @for (item of menuItems; track item; let last = $last) {
+    <a
+      ui-text-btn
+      [routerLink]="item?.href"
+      (pointerdown)="item.onPoint?.()"
+      class="menu-item"
+      [class.menu-item--disabled]="item.disabled"
+      [class.menu-item--last-item]="last"
+      >{{ item.label }}</a
+    >
+  }
+</div>

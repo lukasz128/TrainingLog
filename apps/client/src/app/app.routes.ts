@@ -7,7 +7,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'instance',
-    loadComponent: () => import('dashboard').then((c) => c.Dashboard),
+    loadChildren: () => import('./components/instance.routes'),
   },
   { path: '**', redirectTo: 'auth' },
 ];

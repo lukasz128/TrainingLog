@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  height: 100%;
+  background-color: var(--color-primary);
+  padding-top: var(--spacing-safe-top);
+  padding-bottom: var(--spacing-safe-bottom);
+
+  auth-register-form {
+    width: 300px;
+    margin: 0 auto;
+  }
+}

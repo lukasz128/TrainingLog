@@ -12,7 +12,14 @@
       "dependsOn": ["build"],
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/ui/ng-package.json"
+        "project": "libs/ui/ng-package.json",
+        "assets": [
+          {
+            "input": "libs/ui/src/assets/icons",
+            "glob": "**/*",
+            "output": "assets/ui/icons"
+          }
+        ]
       },
       "configurations": {
         "production": {

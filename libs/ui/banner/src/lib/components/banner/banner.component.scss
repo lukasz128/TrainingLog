@@ -1,0 +1,64 @@
+:host {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: start;
+
+  color: var(--banner-text, var(--color-white));
+  background-color: var(--banner-bg, var(--color-primary));
+  border: 3px solid var(--banner-accent, var(--color-accent));
+  border-radius: 28px;
+
+  padding: 26px 30px;
+}
+
+.banner__accent {
+  width: 12px;
+  border-radius: 999px;
+  background-color: var(--banner-accent, var(--color-accent));
+  align-self: stretch;
+}
+
+.banner__content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.banner__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--banner-accent, var(--color-accent));
+}
+
+.banner__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  // width: 46px;
+  // height: 46px;
+  // border-radius: 50%;
+  // border: 3px solid var(--banner-accent, var(--color-accent));
+}
+
+.banner__icon i {
+  width: 40px;
+  height: 40px;
+
+  & ::ng-deep * {
+    fill: currentColor;
+  }
+}
+
+.banner__title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.banner__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
