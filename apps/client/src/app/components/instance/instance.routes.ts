@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
-import { IS_REUSE_KEY } from '../utils/custom-router-reuse-strategy.service';
+import { IS_REUSE_KEY } from '../../utils/custom-router-reuse-strategy.service';
+import { mainHeaderVisibilitySetterResolver } from '../../utils/main-header-visibility';
 
 export default [
   {
@@ -12,6 +13,13 @@ export default [
         loadComponent: () =>
           import('dashboard').then((c) => c.DashboardComponent),
         title: undefined,
+      },
+      {
+        path: 'training',
+        loadChildren: () => import('../activities/activities.routes'),
+        resolve: {
+          mainHeaderVisibility: mainHeaderVisibilitySetterResolver(false),
+        },
       },
       {
         path: 'menu',

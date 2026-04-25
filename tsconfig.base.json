@@ -38,7 +38,10 @@
       "dashboard/data-access": [
         "libs/client/dashboard/data-access/src/index.ts"
       ],
-      "menu": ["libs/client/menu/src/index.ts"]
+      "menu": ["libs/client/menu/src/index.ts"],
+      "strength": ["libs/client/activities/strength/src/index.ts"],
+      "strength-service": ["libs/api/activities/strength/src/index.ts"],
+      "strength/ui": ["libs/client/activities/strength/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

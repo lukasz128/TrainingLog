@@ -1,0 +1,19 @@
+@let titleVar = title();
+@if (hasMainHeader()) {
+  <header>
+    @if (titleVar !== undefined) {
+      <h1 class="title">{{ titleVar }}</h1>
+    } @else {
+      <img
+        ngSrc="assets/icons/logo-xs.svg"
+        width="144"
+        height="20"
+        alt="Logo"
+        priority
+      />
+    }
+  </header>
+}
+
+<router-outlet />
+<ui-navbar />

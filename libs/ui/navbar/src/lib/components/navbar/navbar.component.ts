@@ -71,7 +71,7 @@ export const NAVBAR_ITEMS_TOKEN = new InjectionToken<Signal<NavbarItem[]>>(
 );
 
 @Component({
-  selector: 'ui-nav',
+  selector: 'ui-navbar',
   imports: [
     IconDirective,
     RippleDirective,

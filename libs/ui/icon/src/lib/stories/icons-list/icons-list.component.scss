@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.icon-container {
+  background: white;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 20px;
+
+  color: black !important;
+  fill: black !important;
+}

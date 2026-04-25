@@ -9,6 +9,4 @@ import { RouterModule } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {},
 })
-export class App {
-  protected title = 'client';
-}
+export class App {}

@@ -93,7 +93,7 @@ const PrimaryTemplate = (args: Story) => {
     },
 
     template: `
-      <ui-nav style="margin-top:30px;" /> 
+      <ui-navbar style="margin-top:30px;" /> 
     `,
   };
 };

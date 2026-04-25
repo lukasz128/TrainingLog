@@ -1,3 +1,9 @@
+::ng-deep {
+  :root {
+    --navbar-height: 68px;
+  }
+}
+
 :host {
   display: flex;
   justify-content: space-around;
@@ -7,7 +13,7 @@
   bottom: 0;
   z-index: 10;
   width: 100%;
-  min-height: 64px;
+  height: var(--navbar-height);
   padding-bottom: var(--spacing-safe-bottom, 0px);
   border-top: 3px solid var(--color-white);
   background-color: var(--color-primary);
@@ -45,7 +51,6 @@
     }
 
     &--active {
-      // background-color: red;
       color: var(--color-white);
 
       & i ::ng-deep * {

@@ -1,0 +1,27 @@
+<header class="header">
+  <button ui-icon-btn type="button" (click)="goBack()">
+    <i uiIcon="arrow-left" size="20px"></i>
+  </button>
+
+  <div class="header__content">
+    <h1>{{ activity.name }}</h1>
+    <p>Training Session</p>
+  </div>
+
+  <button ui-icon-btn type="button">
+    <i uiIcon="more" size="20px"></i>
+  </button>
+</header>
+
+<main class="main">
+  @for (item of activity.items; track item; let last = $last) {
+    <strength-exercise-item
+      [data]="item"
+      class="exercise"
+      uiRipple
+    />
+    @if (!last) {
+      <strength-exercise-linking class="exercise" />
+    }
+  }
+</main>

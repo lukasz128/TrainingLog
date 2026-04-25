@@ -1,0 +1,27 @@
+{
+  "name": "strength-service",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api/activities/strength/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/api/activities/strength",
+        "tsConfig": "libs/api/activities/strength/tsconfig.lib.json",
+        "packageJson": "libs/api/activities/strength/package.json",
+        "main": "libs/api/activities/strength/src/index.ts",
+        "assets": ["libs/api/activities/strength/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/api/activities/strength/jest.config.cts"
+      }
+    }
+  }
+}

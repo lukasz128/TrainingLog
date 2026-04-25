@@ -17,8 +17,8 @@ export class ShellComponent {
     },
     {
       label: 'Training',
-      href: 'instance/training',
-      disabled: true,
+      href: '/instance/training',
+      disabled: false,
     },
     {
       label: 'Schedule',
