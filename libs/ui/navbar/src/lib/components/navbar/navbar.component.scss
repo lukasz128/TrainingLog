@@ -1,19 +1,16 @@
 ::ng-deep {
   :root {
-    --navbar-height: 68px;
+    --navbar-height: 95px;
   }
 }
 
 :host {
   display: flex;
   justify-content: space-around;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
   z-index: 10;
   width: 100%;
   height: var(--navbar-height);
+  padding-top: 10px;
   padding-bottom: var(--spacing-safe-bottom, 0px);
   border-top: 3px solid var(--color-white);
   background-color: var(--color-primary);
@@ -26,9 +23,8 @@
 
     gap: 5px;
     min-height: 60px;
-
     color: var(--color-white-300);
-    font-size: 1rem;
+    font-size: 0.8rem;
     letter-spacing: -1%;
     font-weight: 300;
 

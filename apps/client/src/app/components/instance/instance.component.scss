@@ -1,15 +1,17 @@
 :host {
-  display: block;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 
   header {
-    z-index: 10;
-    position: sticky;
-    top: 0;
-
     padding-top: calc(var(--spacing-safe-top) + 15px);
     padding-bottom: 10px;
 
     background-color: var(--color-black);
+  }
+
+  .main {
+    overflow-y: auto;
+    flex: 1;
   }
 }

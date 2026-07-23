@@ -1,0 +1,23 @@
+@let dataVar = data();
+<div class="exercise-item__left">
+  <div
+    class="exercise-item__status"
+    [style.--exercise-item-progress]="progressPercent() + '%'"
+  >
+    <i uiIcon="check" size="22px" aria-hidden="true"></i>
+  </div>
+</div>
+
+<div class="exercise-item__body">
+  <div class="exercise-item__title">{{ dataVar.title }}</div>
+  <div class="exercise-item__meta">
+    <span class="exercise-item__phase"
+      >Progress - {{ doneSetsLength() }}/{{ dataVar.sets.length }}</span
+    >
+    <span class="exercise-item__details">{{ dataVar.details }}</span>
+  </div>
+</div>
+
+<div class="exercise-item__chevron" aria-hidden="true">
+  <i uiIcon="chevron-right"></i>
+</div>

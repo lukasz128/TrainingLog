@@ -7,6 +7,7 @@
     "apps/*"
   ],
   "scripts": {
+    "db:seed:strength": "node apps/api/scripts/seed-strength-mock-data.cjs",
     "start:ios": "npx cap run ios -l",
     "start": "npx nx serve client --port 3000 --host 0.0.0.0",
     "storybook:ui": "npx nx storybook ui"

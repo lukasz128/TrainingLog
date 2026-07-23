@@ -1,0 +1,45 @@
+@for (set of sets(); track set; let index = $index) {
+  <div
+    class="exercise-sheet__row"
+    [class.exercise-sheet__row--pending]="!set.done"
+  >
+    <span class="exercise-sheet__index">{{ index + 1 }}</span>
+    <ui-checkbox
+      class="exercise-sheet__checkbox"
+      [(ngModel)]="set.done"
+      (ngModelChange)="changed.emit()"
+      [ariaLabel]="'Series ' + (index + 1)"
+    />
+    <strength-set-input
+      class="exercise-sheet__input"
+      [(ngModel)]="set.weight"
+      (ngModelChange)="changed.emit()"
+      suffix="kg"
+      [ariaLabel]="'Series ' + (index + 1) + ' weight'"
+    />
+    <strength-set-input
+      class="exercise-sheet__input"
+      [(ngModel)]="set.reps"
+      (ngModelChange)="changed.emit()"
+      suffix="powt"
+      [ariaLabel]="'Series ' + (index + 1) + ' repetitions'"
+    />
+  </div>
+}
+
+<button
+  class="exercise-sheet__add reset-btn"
+  type="button"
+  (click)="addSeries()"
+>
+  <span class="exercise-sheet__add-icon" aria-hidden="true"></span>
+  <span>Add series</span>
+</button>
+<button
+  ui-filled-btn
+  class="exercise-sheet__close"
+  type="button"
+  (click)="closed.emit()"
+>
+  Close
+</button>

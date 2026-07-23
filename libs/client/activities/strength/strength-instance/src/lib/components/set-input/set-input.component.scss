@@ -1,0 +1,60 @@
+:host {
+  display: inline-grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 2px;
+  min-height: 52px;
+  min-width: 0;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: rgb(255 255 255 / 10%);
+  color: rgb(255 255 255 / 90%);
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+:host:focus-within {
+  box-shadow:
+    0 0 0 2px rgb(0 0 0 / 86%),
+    0 0 0 5px rgb(255 255 255 / 24%);
+}
+
+:host.strength-set-input--disabled {
+  opacity: 0.45;
+}
+
+.strength-set-input__control {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  outline: 0;
+  min-width: 0;
+  width: 100%;
+  color: inherit;
+  font: inherit;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+  text-align: right;
+  caret-color: currentColor;
+}
+
+.strength-set-input__control:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.strength-set-input__control::-webkit-outer-spin-button,
+.strength-set-input__control::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.strength-set-input__suffix {
+  color: inherit;
+  font-size: 16px;
+  line-height: 1;
+  pointer-events: none;
+}

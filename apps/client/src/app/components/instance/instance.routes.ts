@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
+import { mainHeaderVisibilitySetterResolver } from 'common';
 import { IS_REUSE_KEY } from '../../utils/custom-router-reuse-strategy.service';
-import { mainHeaderVisibilitySetterResolver } from '../../utils/main-header-visibility';
 
 export default [
   {

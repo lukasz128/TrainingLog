@@ -1,5 +1,5 @@
 @let titleVar = title();
-@if (hasMainHeader()) {
+@if (isHeaderVisible()) {
   <header>
     @if (titleVar !== undefined) {
       <h1 class="title">{{ titleVar }}</h1>
@@ -15,5 +15,12 @@
   </header>
 }
 
-<router-outlet />
-<ui-navbar />
+<main class="main">
+  <router-outlet />
+</main>
+
+@if (isNavbarVisible()) {
+  @defer {
+    <ui-navbar />
+  }
+}

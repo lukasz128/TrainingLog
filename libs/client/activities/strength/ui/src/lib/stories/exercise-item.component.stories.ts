@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/angular';
-import { ExerciseLinkingComponent } from '../components/exercise-linking/exercise-linking.component';
-import { ExerciseItemComponent } from '../components/exercise-item/exercise-item.component';
+import { ExerciseItemComponent } from '../../../../strength-instance/src/lib/components/exercise-item/exercise-item.component';
+import { ExerciseLinkingComponent } from '../../../../strength-instance/src/lib/components/exercise-linking/exercise-linking.component';
 
 export default {
   title: 'Strength/Exercise Item',

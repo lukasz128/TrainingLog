@@ -1,0 +1,65 @@
+<header class="header">
+  <button ui-icon-btn type="button" (click)="goBack()">
+    <i uiIcon="arrow-left" size="20px"></i>
+  </button>
+
+  <div class="header__content">
+    <h1>{{ activity()?.name ?? 'Strength' }}</h1>
+    <p>{{ activity()?.subtitle ?? 'Training Session' }}</p>
+  </div>
+
+  <button ui-icon-btn type="button">
+    <i uiIcon="more" size="20px" aria-hidden="true"></i>
+  </button>
+</header>
+
+<main class="main">
+  @if (loading()) {
+    <p class="state">Loading strength activity...</p>
+  } @else if (error()) {
+    <p class="state state--error">{{ error() }}</p>
+  } @else if (activity(); as activityData) {
+    @for (item of activityData.items; track item.id; let last = $last) {
+      <strength-exercise-item
+        [data]="item"
+        class="exercise exercise-position"
+        uiRipple
+        (click)="openExerciseSheet(item)"
+      />
+
+      @if (!last) {
+        <strength-exercise-linking
+          class="exercise-position"
+          [isActive]="false"
+        />
+      }
+    }
+    @if (saveError()) {
+      <p class="state state--error">{{ saveError() }}</p>
+    }
+  } @else {
+    <p class="state">No strength activity selected.</p>
+  }
+</main>
+
+<footer class="footer"></footer>
+
+@defer {
+  <ui-bottom-sheet
+    [open]="selectedExercise !== null"
+    [title]="selectedExercise?.title ?? null"
+    (closed)="closeExerciseSheet()"
+  >
+    @if (selectedExercise; as exercise) {
+      <strength-exercise-sheet
+        class="strength-exercise-sheet"
+        [sets]="exercise.sets"
+        (changed)="scheduleExerciseSave(exercise)"
+        (closed)="closeExerciseSheet()"
+      />
+      @if (savingExerciseId() === exercise.id) {
+        <p class="state">Saving exercise...</p>
+      }
+    }
+  </ui-bottom-sheet>
+}

@@ -2,8 +2,11 @@ import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import {
+  MainHeaderVisibilityService,
+  MainNavbarVisibilityService,
+} from 'common';
 import { NavbarComponent } from 'ui/navbar';
-import { MainHeaderVisibilityService } from '../../utils/main-header-visibility';
 
 @Component({
   selector: 'app-instance',
@@ -15,7 +18,9 @@ import { MainHeaderVisibilityService } from '../../utils/main-header-visibility'
 export class InstanceComponent {
   private readonly activatedRouter = inject(ActivatedRoute);
 
+  protected readonly isNavbarVisible = inject(MainNavbarVisibilityService)
+    .stateValue;
   protected readonly title = toSignal(this.activatedRouter.title);
-  protected readonly hasMainHeader = inject(MainHeaderVisibilityService)
+  protected readonly isHeaderVisible = inject(MainHeaderVisibilityService)
     .stateValue;
 }

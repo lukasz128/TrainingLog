@@ -7,5 +7,6 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [],
 })
 export class ShellComponent {}
