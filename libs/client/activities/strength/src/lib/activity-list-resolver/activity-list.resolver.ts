@@ -1,5 +1,6 @@
 import { inject } from '@angular/core';
-import { ResolveFn } from '@angular/router';
+import { RedirectCommand, ResolveFn, Router } from '@angular/router';
+import { ActivityManagerService } from 'activity';
 import { catchError, of } from 'rxjs';
 import {
   StrengthActivity,
@@ -10,6 +11,15 @@ export const activityListResolver: ResolveFn<
   StrengthActivity[] | null
 > = () => {
   const strengthActivityFacade = inject(StrengthActivityFacadeService);
+  const activityManager = inject(ActivityManagerService);
+
+  const activeActivity = activityManager.activeActivity();
+  if (activeActivity !== undefined) {
+    const router = inject(Router);
+    const path = router.parseUrl(activeActivity.routerLink);
+
+    return new RedirectCommand(path);
+  }
 
   return strengthActivityFacade
     .loadActivities()

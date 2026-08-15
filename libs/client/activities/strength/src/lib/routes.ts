@@ -10,7 +10,8 @@ import {
   StrengthHttpService,
 } from 'strength/data-access';
 import { ShellComponent } from 'strength/ui';
-import { activityListResolver } from './activity-list.resolver';
+import { activityListResolver } from './activity-list-resolver/activity-list.resolver';
+import { isActiveStrengthGuard } from './utils/route/is-active-strength-guard';
 
 export const routes = [
   {
@@ -31,6 +32,7 @@ export const routes = [
         path: 'list',
         loadComponent: () =>
           import('strength/ui').then((c) => c.ActivityListComponent),
+        canActivate: [isActiveStrengthGuard],
         resolve: {
           activities: activityListResolver,
           mainHeaderVisibility: mainHeaderVisibilitySetterResolver(false),

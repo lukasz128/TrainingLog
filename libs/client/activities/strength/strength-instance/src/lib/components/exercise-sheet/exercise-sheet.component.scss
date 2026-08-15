@@ -23,11 +23,12 @@
   align-items: center;
   gap: 16px;
   padding-left: 18px;
+  padding-right: 10px;
 }
 
 .exercise-sheet__index {
   position: absolute;
-  top: -2px;
+  top: 0;
   left: 0;
   z-index: 1;
   display: inline-flex;

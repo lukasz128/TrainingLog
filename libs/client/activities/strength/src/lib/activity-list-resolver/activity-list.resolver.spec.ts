@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { StrengthActivityFacadeService } from 'strength/data-access';
 import { firstValueFrom, Observable, of, throwError } from 'rxjs';
+import { StrengthActivityFacadeService } from 'strength/data-access';
 import { activityListResolver } from './activity-list.resolver';
 
 describe('activityListResolver', () => {

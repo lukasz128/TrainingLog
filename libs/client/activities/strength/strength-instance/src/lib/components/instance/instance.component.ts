@@ -3,10 +3,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostListener,
-  OnDestroy,
   inject,
+  OnDestroy,
 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ACTIVE_STRENGTH_QUERY_PARAMS_KEY } from 'strength';
 import {
   StrengthActivityFacadeService,
   StrengthExercise,
@@ -17,6 +19,7 @@ import { IconDirective } from 'ui/icon';
 import { ExerciseItemComponent } from '../exercise-item/exercise-item.component';
 import { ExerciseLinkingComponent } from '../exercise-linking/exercise-linking.component';
 import { ExerciseSheetComponent } from '../exercise-sheet/exercise-sheet.component';
+import { TrainingPanelComponent } from '../training-panel/training-panel.component';
 
 @Component({
   selector: 'strength-instance',
@@ -26,6 +29,7 @@ import { ExerciseSheetComponent } from '../exercise-sheet/exercise-sheet.compone
     ExerciseItemComponent,
     ExerciseLinkingComponent,
     ExerciseSheetComponent,
+    TrainingPanelComponent,
     BottomSheetComponent,
     RippleDirective,
   ],
@@ -38,6 +42,9 @@ export class InstanceComponent implements OnDestroy {
   private readonly strengthActivityFacade = inject(
     StrengthActivityFacadeService,
   );
+  private readonly router = inject(Router);
+  private readonly activatedRoute = inject(ActivatedRoute);
+
   private pendingExercise: StrengthExercise | null = null;
   private saveTimeoutId: ReturnType<typeof setTimeout> | null = null;
   private saveSubscription: Subscription | null = null;
@@ -55,6 +62,11 @@ export class InstanceComponent implements OnDestroy {
   }
 
   protected goBack(): void {
+    this.router.navigate([], {
+      queryParams: { [ACTIVE_STRENGTH_QUERY_PARAMS_KEY]: true },
+      skipLocationChange: true,
+      relativeTo: this.activatedRoute,
+    });
     this.location.back();
   }
 

@@ -9,6 +9,7 @@ import {
 
 @Injectable()
 export class StrengthActivityFacadeService {
+  // private readonly activityManager = inject(ActivityManagerService);
   public readonly strengthHttpService = inject(StrengthHttpService);
 
   readonly activitiesState = signal<StrengthActivitiesState>({ state: 'IDLE' });
@@ -24,6 +25,7 @@ export class StrengthActivityFacadeService {
     return this.strengthHttpService.getActivities$().pipe(
       take(1),
       tap((activities) => {
+        console.log(activities);
         this.activitiesState.set({ state: 'LOADED', data: activities });
       }),
       catchError((error) => {

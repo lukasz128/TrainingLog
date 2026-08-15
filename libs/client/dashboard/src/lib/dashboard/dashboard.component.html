@@ -1,8 +1,13 @@
-<ui-information-banner title="Information">
-  <p>
-    You have active exercise: {{ 'FBW B' }}
-    <button ui-filled-btn type="button">Go to exercise</button>
-  </p>
-</ui-information-banner>
+@let activeSessionVar = activeSession();
+@if (activeSessionVar) {
+  <ui-information-banner title="Information">
+    <p>
+      {{ activeSessionVar.name }}
+      <a ui-filled-btn [routerLink]="activeSessionVar.routerLink"
+        >Go to exercise
+      </a>
+    </p>
+  </ui-information-banner>
+}
 
-<dashboard-activites-table [rows]="activities" />
+<!-- <dashboard-activites-table [rows]="activities" /> -->

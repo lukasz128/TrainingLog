@@ -1,0 +1,18 @@
+<div class="training-panel__summary">
+  <p class="training-panel__label">Training time</p>
+  <p class="training-panel__time">{{ formattedTime() }}</p>
+  <p class="training-panel__status">{{ status() }}</p>
+</div>
+
+<div class="training-panel__actions">
+  <button class="training-panel__action" type="button" (click)="togglePause()">
+    {{ status() === 'Paused' ? 'Resume' : 'Pause' }}
+  </button>
+  <button
+    class="training-panel__action training-panel__action--danger"
+    type="button"
+    (click)="stopTraining()"
+  >
+    Stop
+  </button>
+</div>
