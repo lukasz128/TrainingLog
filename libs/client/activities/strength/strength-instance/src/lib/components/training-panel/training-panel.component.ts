@@ -3,11 +3,12 @@ import {
   Component,
   computed,
   inject,
-  OnInit,
   output,
   signal,
 } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { ActiveActivity } from 'activity';
+import { filter, take, tap } from 'rxjs';
 import { StrengthActivityFacadeService } from 'strength/data-access';
 import { StrengthSessionService } from '../../services/strength-session.service';
 
@@ -18,11 +19,28 @@ import { StrengthSessionService } from '../../services/strength-session.service'
   styleUrl: './training-panel.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TrainingPanelComponent implements OnInit {
+export class TrainingPanelComponent {
   private readonly sessionService = inject(StrengthSessionService);
   private readonly strengthActivityFacade = inject(
     StrengthActivityFacadeService,
   );
+
+  private readonly initSession = toObservable(
+    this.strengthActivityFacade.activity,
+  )
+    .pipe(
+      filter((activity) => activity !== null),
+      take(1),
+      tap(({ name, id }) => {
+        const activity: ActiveActivity = {
+          name: name,
+          routerLink: `instance/training/strength/${id}`,
+        };
+        this.sessionService.start(activity);
+      }),
+    )
+    .subscribe();
+
   private readonly isPaused = signal(false);
 
   protected readonly formattedTime = computed(() =>
@@ -34,23 +52,12 @@ export class TrainingPanelComponent implements OnInit {
 
   readonly stopped = output<void>();
 
-  ngOnInit(): void {
-    const a = this.strengthActivityFacade.activity();
-    if (a === null) return;
-
-    const activity: ActiveActivity = {
-      name: a.name,
-      routerLink: `instance/training/strength/${a.id}`,
-    };
-    this.sessionService.start(activity);
-  }
-
   protected togglePause(): void {
     this.isPaused.update((paused) => !paused);
     this.sessionService.togglePause();
   }
 
-  protected stopTraining(): void {
+  protected finishTraining(): void {
     this.sessionService.finish();
     this.stopped.emit();
   }

@@ -30,6 +30,15 @@ export interface StrengthActivity {
   items: StrengthExercise[];
 }
 
+export interface StrengthWorkoutDraft {
+  id: string;
+  activityId: string;
+  startTime: number;
+  updatedAt: number;
+  activity: StrengthActivity;
+  notes?: string;
+}
+
 export type StrengthActivitiesState =
   | { state: 'IDLE' }
   | { state: 'LOADING' }

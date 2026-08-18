@@ -43,7 +43,7 @@
 </main>
 
 <footer class="footer">
-  <strength-training-panel (stopped)="goBack()" />
+  <strength-training-panel (stopped)="completeWorkout()" />
 </footer>
 
 @defer {
@@ -56,11 +56,11 @@
       <strength-exercise-sheet
         class="strength-exercise-sheet"
         [sets]="exercise.sets"
-        (changed)="scheduleExerciseSave(exercise)"
+        (changed)="updateExerciseDraft(exercise)"
         (closed)="closeExerciseSheet()"
       />
-      @if (savingExerciseId() === exercise.id) {
-        <p class="state">Saving exercise...</p>
+      @if (savingExerciseId() === 'active_workout') {
+        <p class="state">Saving workout...</p>
       }
     }
   </ui-bottom-sheet>

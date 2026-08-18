@@ -2,7 +2,6 @@ import { Location } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  HostListener,
   inject,
   OnDestroy,
 } from '@angular/core';
@@ -45,9 +44,7 @@ export class InstanceComponent implements OnDestroy {
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
 
-  private pendingExercise: StrengthExercise | null = null;
-  private saveTimeoutId: ReturnType<typeof setTimeout> | null = null;
-  private saveSubscription: Subscription | null = null;
+  private completeSubscription: Subscription | null = null;
 
   protected readonly activity = this.strengthActivityFacade.activity;
   protected readonly error = this.strengthActivityFacade.error;
@@ -75,61 +72,27 @@ export class InstanceComponent implements OnDestroy {
   }
 
   protected closeExerciseSheet(): void {
-    if (this.selectedExercise !== null) {
-      this.saveExerciseNow(this.selectedExercise);
-    }
-
     this.selectedExercise = null;
   }
 
-  protected scheduleExerciseSave(exercise: StrengthExercise): void {
-    this.pendingExercise = exercise;
-
-    if (this.saveTimeoutId !== null) {
-      clearTimeout(this.saveTimeoutId);
-    }
-
-    this.saveTimeoutId = setTimeout(() => {
-      this.saveExerciseNow(exercise);
-    }, 500);
+  protected updateExerciseDraft(exercise: StrengthExercise): void {
+    this.strengthActivityFacade.updateExerciseSets(exercise.id, exercise.sets);
   }
 
   protected getProgress(item: StrengthExercise): string {
     return `${item.sets.filter((set) => set.done).length}/${item.sets.length}`;
   }
 
-  @HostListener('window:beforeunload')
-  protected saveExerciseBeforeUnload(): void {
-    const exercise = this.pendingExercise ?? this.selectedExercise;
-
-    if (exercise === null) {
-      return;
-    }
-
-    this.strengthActivityFacade.saveExerciseSetsOnUnload(
-      exercise.id,
-      exercise.sets,
-    );
+  protected completeWorkout(): void {
+    this.completeSubscription?.unsubscribe();
+    this.completeSubscription = this.strengthActivityFacade
+      .completeWorkout()
+      .subscribe({
+        next: () => this.goBack(),
+      });
   }
 
   ngOnDestroy(): void {
-    if (this.pendingExercise !== null) {
-      this.saveExerciseNow(this.pendingExercise);
-    }
-
-    this.saveSubscription?.unsubscribe();
-  }
-
-  private saveExerciseNow(exercise: StrengthExercise): void {
-    if (this.saveTimeoutId !== null) {
-      clearTimeout(this.saveTimeoutId);
-      this.saveTimeoutId = null;
-    }
-
-    this.pendingExercise = null;
-    this.saveSubscription?.unsubscribe();
-    this.saveSubscription = this.strengthActivityFacade
-      .saveExerciseSets(exercise.id, exercise.sets)
-      .subscribe();
+    this.completeSubscription?.unsubscribe();
   }
 }
