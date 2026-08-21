@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
   inject,
   input,
   viewChild,
@@ -31,6 +32,10 @@ export class SetInputComponent extends ValueAccessorBase<string> {
   readonly suffix = input('');
   readonly ariaLabel = input<string | null>(null);
   readonly inputMode = input('decimal');
+
+  @HostListener('click') onClick() {
+    this.focus();
+  }
 
   get inputValue(): string {
     return this.value ?? '';

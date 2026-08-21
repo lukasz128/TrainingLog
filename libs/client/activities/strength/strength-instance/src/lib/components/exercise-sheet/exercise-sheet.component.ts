@@ -5,8 +5,9 @@ import {
   output,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FilledButtonComponent } from 'ui/button';
+import { FilledButtonComponent, IconButtonComponent } from 'ui/button';
 import { CheckboxComponent } from 'ui/checkbox';
+import { IconDirective } from 'ui/icon';
 import { SetInputComponent } from '../set-input/set-input.component';
 
 export interface ExerciseSet {
@@ -22,6 +23,8 @@ export interface ExerciseSet {
     CheckboxComponent,
     SetInputComponent,
     FilledButtonComponent,
+    IconButtonComponent,
+    IconDirective,
   ],
   templateUrl: './exercise-sheet.component.html',
   styleUrl: './exercise-sheet.component.scss',
@@ -31,6 +34,7 @@ export class ExerciseSheetComponent {
   readonly sets = input.required<ExerciseSet[]>();
   readonly closed = output<void>();
   readonly changed = output<void>();
+  readonly remove = output<void>();
 
   addSeries(): void {
     this.sets().push({ done: false, weight: '', reps: '' });

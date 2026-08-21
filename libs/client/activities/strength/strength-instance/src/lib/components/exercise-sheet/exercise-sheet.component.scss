@@ -19,11 +19,18 @@
 .exercise-sheet__row {
   position: relative;
   display: grid;
-  grid-template-columns: 62px 1fr 1fr;
+  grid-template-columns: 62px 1fr 1fr 45px;
   align-items: center;
   gap: 16px;
   padding-left: 18px;
-  padding-right: 10px;
+
+  &-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    // Note: Add to var
+    background-color: rgba(6, 9, 14, 0.98);
+  }
 }
 
 .exercise-sheet__index {
@@ -50,9 +57,12 @@
   width: 100%;
 }
 
-.exercise-sheet__row--pending .exercise-sheet__input {
-  color: rgb(255 255 255 / 40%);
-  background: rgb(255 255 255 / 8%);
+.exercise-sheet__footer {
+  position: sticky;
+  bottom: 0;
+  background-color: rgba(6, 9, 14, 0.98);
+  z-index: 1;
+  padding-bottom: 20px;
 }
 
 .exercise-sheet__add {
@@ -61,6 +71,7 @@
   gap: 14px;
   margin-left: 23px;
   margin-top: 14px;
+  margin-bottom: 14px;
   align-self: flex-start;
   padding: 0;
   border: 0;

@@ -1,3 +1,9 @@
+<header class="exercise-sheet__row exercise-sheet__row-header">
+  <span></span>
+  <span style="padding: 0 14px">weight</span>
+  <span style="padding: 0 14px">series</span>
+  <span></span>
+</header>
 @for (set of sets(); track set; let index = $index) {
   <div
     class="exercise-sheet__row"
@@ -21,25 +27,35 @@
       class="exercise-sheet__input"
       [(ngModel)]="set.reps"
       (ngModelChange)="changed.emit()"
-      suffix="powt"
       [ariaLabel]="'Series ' + (index + 1) + ' repetitions'"
     />
+
+    <button
+      ui-icon-btn
+      type="button"
+      (click)="remove.emit()"
+      aria-label="Remove set of exercise"
+    >
+      <i uiIcon="more" size="20px"></i>
+    </button>
   </div>
 }
 
-<button
-  class="exercise-sheet__add reset-btn"
-  type="button"
-  (click)="addSeries()"
->
-  <span class="exercise-sheet__add-icon" aria-hidden="true"></span>
-  <span>Add series</span>
-</button>
-<button
-  ui-filled-btn
-  class="exercise-sheet__close"
-  type="button"
-  (click)="closed.emit()"
->
-  Close
-</button>
+<footer class="exercise-sheet__footer">
+  <button
+    class="exercise-sheet__add reset-btn"
+    type="button"
+    (click)="addSeries()"
+  >
+    <span class="exercise-sheet__add-icon" aria-hidden="true"></span>
+    <span>Add series</span>
+  </button>
+  <button
+    ui-filled-btn
+    class="exercise-sheet__close"
+    type="button"
+    (click)="closed.emit()"
+  >
+    Close
+  </button>
+</footer>
