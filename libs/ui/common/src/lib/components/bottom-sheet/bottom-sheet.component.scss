@@ -1,3 +1,10 @@
+::ng-deep {
+  :root {
+    --bottom-sheet-padding-x: 20px;
+    --bottom-sheet-padding-bottom: 22px;
+  }
+}
+
 :host {
   position: fixed;
   inset: 0;
@@ -63,7 +70,7 @@
 .sheet__title {
   margin: 0;
   padding: 0 24px 8px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: 0.01em;

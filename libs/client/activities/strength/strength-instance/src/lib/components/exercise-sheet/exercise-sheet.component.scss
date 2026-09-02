@@ -1,9 +1,11 @@
 :host {
+  --fixed-content-margin-left: 5px;
+  --calculated-content-margin-left: calc(
+    -1 * var(--bottom-sheet-padding-x) + var(--fixed-content-margin-left)
+  );
+
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-bottom: 8px;
-
   & * {
     overflow: hidden;
   }
@@ -16,15 +18,41 @@
   padding-bottom: 8px;
 }
 
+.exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  margin-left: var(--calculated-content-margin-left);
+  margin-right: calc(-1 * var(--bottom-sheet-padding-x));
+}
+
+.previous_training_information {
+  &__header {
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__content {
+    color: var(--color-white-400);
+  }
+}
+
 .exercise-sheet__row {
   position: relative;
   display: grid;
-  grid-template-columns: 62px 1fr 1fr 45px;
+  grid-template-columns: 52px 55px 95px 60px 45px;
   align-items: center;
   gap: 16px;
   padding-left: 18px;
 
   &-header {
+    font-size: 0.8rem;
+
     position: sticky;
     top: 0;
     z-index: 2;
@@ -55,21 +83,32 @@
 
 .exercise-sheet__input {
   width: 100%;
+
+  &-series {
+    &::ng-deep input {
+      text-align: center;
+    }
+  }
 }
 
 .exercise-sheet__footer {
   position: sticky;
-  bottom: 0;
   background-color: rgba(6, 9, 14, 0.98);
   z-index: 1;
   padding-bottom: 20px;
+
+  margin-top: auto;
+  margin-bottom: 0;
+
+  margin-left: var(--calculated-content-margin-left);
+  bottom: calc(-1 * var(--bottom-sheet-padding-bottom));
 }
 
 .exercise-sheet__add {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  margin-left: 23px;
+  margin-left: 17px;
   margin-top: 14px;
   margin-bottom: 14px;
   align-self: flex-start;
