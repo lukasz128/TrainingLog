@@ -1,0 +1,26 @@
+@let titleVar = title();
+@if (isHeaderVisible()) {
+  <header>
+    @if (titleVar !== undefined) {
+      <h1 class="title">{{ titleVar }}</h1>
+    } @else {
+      <img
+        ngSrc="assets/icons/logo-xs.svg"
+        width="144"
+        height="20"
+        alt="Logo"
+        priority
+      />
+    }
+  </header>
+}
+
+<main class="main">
+  <router-outlet />
+</main>
+
+@if (isNavbarVisible()) {
+  @defer {
+    <ui-navbar />
+  }
+}

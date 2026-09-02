@@ -7,6 +7,7 @@
     "apps/*"
   ],
   "scripts": {
+    "db:seed:strength": "node apps/api/scripts/seed-strength-mock-data.cjs",
     "start:ios": "npx cap run ios -l",
     "start": "npx nx serve client --port 3000 --host 0.0.0.0",
     "storybook:ui": "npx nx storybook ui"
@@ -54,6 +55,7 @@
     "jest-environment-node": "^30.0.2",
     "jest-preset-angular": "~16.0.0",
     "jest-util": "^30.0.2",
+    "jsonc-eslint-parser": "^2.1.0",
     "nx": "22.3.3",
     "prettier": "~3.6.2",
     "storybook": "10.1.11",
@@ -74,9 +76,11 @@
     "@angular/platform-server": "~21.0.0",
     "@angular/router": "~21.0.0",
     "@angular/ssr": "~21.0.0",
+    "@capacitor/action-sheet": "^8.1.1",
     "@capacitor/android": "^8.0.0",
     "@capacitor/core": "^8.0.0",
     "@capacitor/ios": "^8.0.0",
+    "@ionic/pwa-elements": "^3.4.0",
     "@nestjs/common": "^11.0.0",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.0",
@@ -84,6 +88,7 @@
     "@nestjs/platform-express": "^11.0.0",
     "@nestjs/typeorm": "^11.0.0",
     "axios": "^1.6.0",
+    "dexie": "^4.2.1",
     "express": "^4.21.2",
     "pg": "^8.17.2",
     "postcss": "^8.5.6",

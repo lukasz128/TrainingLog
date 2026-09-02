@@ -1,5 +1,12 @@
 import { NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+} from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { ActivityManagerService } from 'activity';
 import { ActivitesTableComponent } from 'dashboard/ui';
 import { InformationBannerComponent } from 'ui/banner';
 import { FilledButtonComponent } from 'ui/button';
@@ -11,6 +18,7 @@ import { shortListActivities } from '../../../data-access/src/lib/activities.moc
     NgOptimizedImage,
     InformationBannerComponent,
     FilledButtonComponent,
+    RouterLink,
     ActivitesTableComponent,
   ],
   templateUrl: './dashboard.component.html',
@@ -18,5 +26,10 @@ import { shortListActivities } from '../../../data-access/src/lib/activities.moc
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
+  private readonly activityManager = inject(ActivityManagerService);
+
   protected readonly activities = shortListActivities;
+  protected readonly activeSession = computed(() =>
+    this.activityManager.activeActivity(),
+  );
 }

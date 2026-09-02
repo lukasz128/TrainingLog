@@ -34,6 +34,21 @@ const iconsStore = {
   lightning: {
     path: BASE_PATH_URL + 'lightning.svg',
   },
+  check: {
+    path: BASE_PATH_URL + 'check.svg',
+  },
+  link: {
+    path: BASE_PATH_URL + 'link.svg',
+  },
+  'chevron-right': {
+    path: BASE_PATH_URL + 'chevron-right.svg',
+  },
+  'arrow-left': {
+    path: BASE_PATH_URL + 'arrow-left.svg',
+  },
+  more: {
+    path: BASE_PATH_URL + 'more.svg',
+  },
 } satisfies IconStore;
 
 export const ICON_STORE = new InjectionToken<IconStore>('ICON STORE', {

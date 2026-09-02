@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLinkWithHref } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLinkWithHref } from '@angular/router';
 import { TextButtonComponent } from 'ui/button';
 
 @Component({
@@ -9,6 +9,8 @@ import { TextButtonComponent } from 'ui/button';
   styleUrl: './shell.component.scss',
 })
 export class ShellComponent {
+  private readonly router = inject(Router);
+
   protected readonly menuItems = [
     {
       label: 'Dashboard',
@@ -17,8 +19,8 @@ export class ShellComponent {
     },
     {
       label: 'Training',
-      href: 'instance/training',
-      disabled: true,
+      href: '/instance/training',
+      disabled: false,
     },
     {
       label: 'Schedule',
@@ -34,6 +36,7 @@ export class ShellComponent {
       label: 'Logout',
       disabled: false,
       onPoint: () => {
+        this.router.navigate(['auth/login']);
         console.log('logout');
       },
     },

@@ -1,5 +1,7 @@
 <form [formGroup]="form" (submit)="submitForm()" class="content-form">
-  <a [routerLink]="['/instance']" ui-filled-btn>Demo</a>
+  @if (isBackendMock) {
+    <a [routerLink]="['/instance']" ui-filled-btn>Demo</a>
+  }
 
   <ui-form-field>
     <ui-label>Email</ui-label>

@@ -1,0 +1,23 @@
+<div class="sheet" [class.sheet--open]="open()">
+  @if (showBackdrop()) {
+    <button
+      class="sheet__backdrop"
+      type="button"
+      aria-label="Close bottom sheet"
+      [attr.tabindex]="open() ? 0 : -1"
+      (click)="handleBackdropClick()"
+    ></button>
+  }
+
+  <section class="sheet__panel" role="dialog" [attr.aria-hidden]="!open()">
+    <span class="sheet__handle" aria-hidden="true"></span>
+
+    @if (title()) {
+      <h3 class="sheet__title">{{ title() }}</h3>
+    }
+
+    <div class="sheet__content">
+      <ng-content />
+    </div>
+  </section>
+</div>

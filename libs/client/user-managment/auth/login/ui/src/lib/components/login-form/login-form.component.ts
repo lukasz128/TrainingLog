@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ENVIRONMENT_CONFIG } from 'common';
 import { FilledButtonComponent, TextButtonComponent } from 'ui/button';
 import { LabelComponent } from 'ui/common';
 import { LoginCredentials } from 'ui/data-access';
@@ -45,9 +46,12 @@ const formGroupBuilder = () =>
   styleUrl: './login-form.component.scss',
 })
 export class LoginFormComponent {
+  private readonly env = inject(ENVIRONMENT_CONFIG);
+
   readonly triggerSubmit = output<LoginCredentials>();
 
   protected readonly form = formGroupBuilder();
+  protected readonly isBackendMock = this.env.backendMock;
 
   protected submitForm(): void {
     if (this.form.status === 'INVALID') {

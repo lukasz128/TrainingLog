@@ -3,7 +3,6 @@ import {
   Component,
   inject,
   InjectionToken,
-  signal,
   Signal,
 } from '@angular/core';
 import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
@@ -32,46 +31,50 @@ export type NavbarItem = NavbarItemLink | NavbarItemAction;
 
 export const NAVBAR_ITEMS_TOKEN = new InjectionToken<Signal<NavbarItem[]>>(
   'Navbar items token',
-  {
-    providedIn: 'root',
-    factory: () => {
-      const items: NavbarItem[] = [
-        {
-          id: 'Dashboard',
-          label: 'Dashboard',
-          icon: 'dashboard',
-          highlight: false,
-          href: '/instance/dashboard',
-          type: 'link',
-        },
-        {
-          id: 'Training',
-          label: 'Training',
-          icon: 'training',
-          highlight: true,
-          onPoint: () => {
-            /* empty */
-          },
-          isActive: true,
-          type: 'action',
-        },
-        {
-          id: 'Menu',
-          label: 'Menu',
-          icon: 'menu',
-          highlight: false,
-          href: '/instance/menu',
-          type: 'link',
-        },
-      ];
-
-      return signal<NavbarItem[]>(items);
-    },
-  },
 );
 
+// export const NAVBAR_ITEMS_TOKEN = new InjectionToken<Signal<NavbarItem[]>>(
+//   'Navbar items token',
+//   {
+//     providedIn: 'root',
+//     factory: () => {
+//       const items: NavbarItem[] = [
+//         {
+//           id: 'Dashboard',
+//           label: 'Dashboard',
+//           icon: 'dashboard',
+//           highlight: false,
+//           href: '/instance/dashboard',
+//           type: 'link',
+//         },
+//         {
+//           id: 'Training',
+//           label: 'Training',
+//           icon: 'training',
+//           highlight: true,
+//           onPoint: () => {
+//             /* empty */
+//           },
+//           isActive: true,
+//           type: 'action',
+//         },
+//         {
+//           id: 'Menu',
+//           label: 'Menu',
+//           icon: 'menu',
+//           highlight: false,
+//           href: '/instance/menu',
+//           type: 'link',
+//         },
+//       ];
+
+//       return signal<NavbarItem[]>(items);
+//     },
+//   },
+// );
+
 @Component({
-  selector: 'ui-nav',
+  selector: 'ui-navbar',
   imports: [
     IconDirective,
     RippleDirective,

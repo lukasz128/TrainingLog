@@ -7,7 +7,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'instance',
-    loadChildren: () => import('./components/instance.routes'),
+    loadChildren: () => import('./components/instance/instance.routes'),
   },
   { path: '**', redirectTo: 'auth' },
 ];

@@ -1,0 +1,54 @@
+<header class="header">
+  <button ui-icon-btn type="button" (click)="goBack()" aria-label="Go back">
+    <i uiIcon="arrow-left" size="20px"></i>
+  </button>
+
+  <div class="header__content">
+    <h1>Strength</h1>
+    <p>Activities</p>
+  </div>
+
+  <span class="header__spacer" aria-hidden="true"></span>
+</header>
+
+<main class="main">
+  @let listState = activitiesState();
+
+  @switch (listState.state) {
+    @case ('LOADING') {
+      <p class="state">Loading strength activities...</p>
+    }
+    @case ('ERROR') {
+      <p class="state state--error">{{ listState.errMsg }}</p>
+    }
+    @case ('LOADED') {
+      @if (listState.data.length > 0) {
+        <div class="activity-list" aria-label="Strength activities">
+          @for (activity of listState.data; track activity.id) {
+            <a
+              class="activity-card"
+              [routerLink]="'../' + activity.id"
+              uiRipple
+            >
+              <span class="activity-card__body">
+                <span class="activity-card__title">{{ activity.name }}</span>
+                <span class="activity-card__subtitle">
+                  {{ activity.subtitle }}
+                </span>
+                <span class="activity-card__meta">
+                  {{ activity.items.length }} exercises
+                </span>
+              </span>
+              <i uiIcon="chevron-right" aria-hidden="true"></i>
+            </a>
+          }
+        </div>
+      } @else {
+        <p class="state">No strength activities yet.</p>
+      }
+    }
+    @default {
+      <p class="state">No strength activities yet.</p>
+    }
+  }
+</main>

@@ -19,6 +19,7 @@
       "auth": ["libs/client/user-managment/auth/src/index.ts"],
       "ui/form-field": ["libs/ui/form-field/src/index.ts"],
       "ui/common": ["libs/ui/common/src/index.ts"],
+      "ui/checkbox": ["libs/ui/checkbox/src/index.ts"],
       "ui/input": ["libs/ui/input/src/index.ts"],
       "ui/button": ["libs/ui/button/src/index.ts"],
       "ui/table": ["libs/ui/table/src/index.ts"],
@@ -38,7 +39,18 @@
       "dashboard/data-access": [
         "libs/client/dashboard/data-access/src/index.ts"
       ],
-      "menu": ["libs/client/menu/src/index.ts"]
+      "menu": ["libs/client/menu/src/index.ts"],
+      "strength": ["libs/client/activities/strength/src/index.ts"],
+      "strength-service": ["libs/api/activities/strength/src/index.ts"],
+      "strength/data-access": [
+        "libs/client/activities/strength/data-access/src/index.ts"
+      ],
+      "strength/ui": ["libs/client/activities/strength/ui/src/index.ts"],
+      "common": ["libs/client/common/src/index.ts"],
+      "strength/strength-instance": [
+        "libs/client/activities/strength/strength-instance/src/index.ts"
+      ],
+      "activity": ["libs/client/activity/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

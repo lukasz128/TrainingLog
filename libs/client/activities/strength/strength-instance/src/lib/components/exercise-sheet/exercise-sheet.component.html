@@ -1,0 +1,79 @@
+<div class="exercise-list">
+  <header class="exercise-sheet__row exercise-sheet__row-header">
+    <span></span>
+    <span
+      class="previous_training_information__header"
+      (click)="showPreviousTrainings()"
+      (keydown)="showPreviousTrainings()"
+    >
+      <div>{{ selectedPreviousTraining()?.name ?? '-' }}</div>
+      <div
+        class="previous_training_information__header-icon"
+        aria-hidden="true"
+      >
+        <i uiIcon="chevron-right" size="20px"></i>
+      </div>
+    </span>
+    <span style="padding: 0 14px">weight</span>
+    <span style="padding: 0 14px">series</span>
+    <span></span>
+  </header>
+  @for (set of sets(); track set; let index = $index) {
+    <div
+      class="exercise-sheet__row"
+      [class.exercise-sheet__row--pending]="!set.done"
+    >
+      <span class="exercise-sheet__index">{{ index + 1 }}</span>
+      <ui-checkbox
+        class="exercise-sheet__checkbox"
+        [(ngModel)]="set.done"
+        (ngModelChange)="changed.emit()"
+        [ariaLabel]="'Series ' + (index + 1)"
+      />
+      <span class="previous_training_information__content">
+        {{ selectedPreviousTraining()?.value?.[0]?.value ?? '-' }}
+      </span>
+      <strength-set-input
+        class="exercise-sheet__input"
+        [(ngModel)]="set.weight"
+        (ngModelChange)="changed.emit()"
+        suffix="kg"
+        [ariaLabel]="'Series ' + (index + 1) + ' weight'"
+      />
+      <strength-set-input
+        class="exercise-sheet__input exercise-sheet__input-series"
+        [(ngModel)]="set.reps"
+        (ngModelChange)="changed.emit()"
+        [ariaLabel]="'Series ' + (index + 1) + ' repetitions'"
+      />
+
+      <button
+        ui-icon-btn
+        type="button"
+        (click)="showActions(set)"
+        aria-label="Remove set of exercise"
+      >
+        <i uiIcon="more" size="20px"></i>
+      </button>
+    </div>
+  }
+</div>
+
+<footer class="exercise-sheet__footer">
+  <button
+    class="exercise-sheet__add reset-btn"
+    type="button"
+    (click)="addSeries()"
+  >
+    <span class="exercise-sheet__add-icon" aria-hidden="true"></span>
+    <span>Add series</span>
+  </button>
+  <button
+    ui-filled-btn
+    class="exercise-sheet__close"
+    type="button"
+    (click)="closed.emit()"
+  >
+    Close
+  </button>
+</footer>
