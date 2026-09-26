@@ -1,5 +1,3 @@
-export const RIPPLE_COLOR = new InjectionToken<string>('Ripple color token');
-
 import {
   computed,
   Directive,
@@ -10,6 +8,8 @@ import {
   input,
   Renderer2,
 } from '@angular/core';
+
+export const RIPPLE_COLOR = new InjectionToken<string>('Ripple color token');
 
 @Directive({
   selector: '[uiRipple]',

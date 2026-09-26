@@ -20,7 +20,6 @@ export class BottomSheetComponent {
   readonly title = input<string | null>(null);
   readonly showBackdrop = input(true);
   readonly closeOnBackdrop = input(true);
-  // readonly maxWidth = input('540px');
 
   readonly closed = output<void>();
 

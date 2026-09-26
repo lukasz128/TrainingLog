@@ -1,0 +1,21 @@
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex-absolutely-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-horizontal-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-vertical-center {
+  display: flex;
+  justify-content: center;
+}

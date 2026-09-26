@@ -1,17 +1,19 @@
-<header class="header">
-  <button ui-icon-btn type="button" (click)="goBack()">
-    <i uiIcon="arrow-left" size="20px"></i>
-  </button>
+<strength-header
+  [title]="activity()?.name ?? 'Strength'"
+  [description]="activity()?.subtitle ?? 'Training Session'"
+>
+  <ng-container slot="left">
+    <button ui-icon-btn type="button" (click)="goBack()">
+      <i uiIcon="arrow-left" size="20px"></i>
+    </button>
+  </ng-container>
 
-  <div class="header__content">
-    <h1>{{ activity()?.name ?? 'Strength' }}</h1>
-    <p>{{ activity()?.subtitle ?? 'Training Session' }}</p>
-  </div>
-
-  <button ui-icon-btn type="button">
-    <i uiIcon="more" size="20px" aria-hidden="true"></i>
-  </button>
-</header>
+  <ng-container slot="right">
+    <button ui-icon-btn type="button">
+      <i uiIcon="more" size="20px" aria-hidden="true"></i>
+    </button>
+  </ng-container>
+</strength-header>
 
 <main class="main">
   @if (loading()) {

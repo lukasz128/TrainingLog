@@ -32,6 +32,8 @@ export class SetInputComponent extends ValueAccessorBase<string> {
   readonly suffix = input('');
   readonly ariaLabel = input<string | null>(null);
   readonly inputMode = input('decimal');
+  readonly label = input('');
+  readonly customStyle = input<string | undefined>(undefined);
 
   @HostListener('click') onClick() {
     this.focus();

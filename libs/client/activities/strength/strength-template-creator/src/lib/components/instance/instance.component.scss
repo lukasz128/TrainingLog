@@ -1,0 +1,61 @@
+:host {
+  --padding-y: 20px;
+  --padding-x: 15px;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .main {
+    height: 100%;
+    overflow-y: scroll;
+    padding: var(--padding-y) var(--padding-x);
+    padding-bottom: 0;
+
+    & .form {
+      width: 100%;
+    }
+
+    & .divider {
+      background-color: #a0a0a060;
+      width: calc(100% - 15px);
+      height: 1px;
+      margin: 20px auto;
+    }
+
+    & .exercise-title {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    & .alternative-exercise-name-input {
+      width: 100%;
+      color: var(--color-white);
+      border: none;
+      background-color: #121212;
+    }
+
+    & .delete-exercise-btn {
+      color: var(--color-error);
+    }
+
+    & .action-btns-container {
+      display: flex;
+      gap: 10px;
+
+      position: sticky;
+      bottom: 0;
+
+      background-color: var(--color-primary);
+
+      margin: calc(-1 * var(--padding-y)) calc(-1 * var(--padding-x));
+      margin-top: 0;
+      padding: var(--padding-y) var(--padding-x);
+      padding-top: 10px;
+    }
+  }
+
+  .clickable {
+    pointer-events: all;
+  }
+}

@@ -50,7 +50,11 @@
       "strength/strength-instance": [
         "libs/client/activities/strength/strength-instance/src/index.ts"
       ],
-      "activity": ["libs/client/activity/src/index.ts"]
+      "activity": ["libs/client/activity/src/index.ts"],
+      "strength/strength-template-creator": [
+        "libs/client/activities/strength/strength-template-creator/src/index.ts"
+      ],
+      "ui/accordion": ["libs/ui/accordion/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

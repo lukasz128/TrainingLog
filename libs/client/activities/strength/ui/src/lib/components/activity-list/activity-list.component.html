@@ -1,15 +1,21 @@
-<header class="header">
-  <button ui-icon-btn type="button" (click)="goBack()" aria-label="Go back">
-    <i uiIcon="arrow-left" size="20px"></i>
-  </button>
+<strength-header title="Strength" description="Activities">
+  <ng-container slot="left">
+    <button ui-icon-btn type="button" (click)="goBack()" aria-label="Go back">
+      <i uiIcon="arrow-left" size="20px"></i>
+    </button>
+  </ng-container>
 
-  <div class="header__content">
-    <h1>Strength</h1>
-    <p>Activities</p>
-  </div>
-
-  <span class="header__spacer" aria-hidden="true"></span>
-</header>
+  <ng-container slot="right">
+    <button
+      ui-icon-btn
+      type="button"
+      (click)="addTemplate()"
+      aria-label="Add strength exercises template"
+    >
+      <i uiIcon="plus" size="20px"></i>
+    </button>
+  </ng-container>
+</strength-header>
 
 <main class="main">
   @let listState = activitiesState();

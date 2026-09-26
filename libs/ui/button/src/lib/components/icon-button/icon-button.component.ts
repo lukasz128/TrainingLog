@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { booleanAttribute, Component, input } from '@angular/core';
 import { RippleDirective } from 'ui/common';
 
 let uniqueIdCounter = 0;
@@ -18,5 +18,5 @@ let uniqueIdCounter = 0;
 })
 export class IconButtonComponent {
   readonly id = input(`ui-icon-button-${uniqueIdCounter++}`);
-  readonly disabled = input<boolean>(false);
+  readonly disabled = input(false, { transform: booleanAttribute });
 }

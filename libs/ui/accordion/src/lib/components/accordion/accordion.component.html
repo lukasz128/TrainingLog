@@ -1,0 +1,30 @@
+<details class="accordion" [attr.name]="name()" [open]="expanded()">
+  <summary
+    class="accordion__header"
+    [attr.disabled]="disabled()"
+    [class.accordion__header--disabled]="disabled()"
+    #summary
+  >
+    <div class="accordion__header-left-slot flex-horizontal-center">
+      <ng-content select="[slot='header-left']" />
+    </div>
+    <div class="accordion__header-right-slot flex-horizontal-center">
+      <ng-content select="[slot='header-right']" />
+
+      @if (!hiddenToggleExpandBtn()) {
+        <button
+          type="button"
+          ui-icon-btn
+          class="accordion__header-extend-btn"
+          (click)="summary.click()"
+          [disabled]="disabled()"
+        >
+          <i uiIcon="chevron-right" size="20px"></i>
+        </button>
+      }
+    </div>
+  </summary>
+  <div class="accordion__content">
+    <ng-content />
+  </div>
+</details>
