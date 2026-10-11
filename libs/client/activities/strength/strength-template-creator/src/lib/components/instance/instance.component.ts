@@ -83,6 +83,10 @@ const FormBuilder = {
         nonNullable: true,
         validators: [Validators.required],
       }),
+      tempo: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
       note: new FormControl(null),
       type: new FormControl<'common'>(
         { value: 'common', disabled: true },

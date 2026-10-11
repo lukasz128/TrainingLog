@@ -7,6 +7,10 @@ export interface LoginCredentials {
   password: string;
 }
 
+export interface LoginResponse {
+  access_token: string;
+}
+
 export interface RegisterCredentials {
   email: string;
   password: string;
@@ -16,11 +20,15 @@ export interface RegisterCredentials {
 export class AuthHttpService {
   private readonly _http = inject(HttpClient);
 
-  login$(credentials: LoginCredentials): Observable<unknown> {
-    return this._http.post<unknown>(`/api/auth/login`, credentials);
+  login$(credentials: LoginCredentials): Observable<LoginResponse> {
+    return this._http.post<LoginResponse>(`/api/auth/login`, credentials);
   }
 
   register$(credentials: RegisterCredentials): Observable<unknown> {
     return this._http.post<unknown>(`/api/auth/register`, credentials);
+  }
+
+  getLoginUser$(): Observable<unknown> {
+    return this._http.get<unknown>(`/api/auth/me`);
   }
 }

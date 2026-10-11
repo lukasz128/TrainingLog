@@ -1,4 +1,5 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+
 import { AuthService } from './auth.service';
 import { LoginCredentials, RegisterCredentials } from './auth.types';
 
@@ -14,5 +15,10 @@ export class AuthController {
   @Post('/register')
   register(@Body() registerCredentials: RegisterCredentials) {
     return this.root.register(registerCredentials);
+  }
+
+  @Get('/me')
+  getUser() {
+    return this.root.getAuthenticatedUser();
   }
 }

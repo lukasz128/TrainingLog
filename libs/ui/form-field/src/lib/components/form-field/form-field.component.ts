@@ -68,6 +68,7 @@ export class FormFieldComponent implements FormField {
 
   @HostListener('keydown.enter')
   @HostListener('keydown.space')
+  @HostListener('click')
   onKeydown(): void {
     this._inputChild()?.focus();
   }

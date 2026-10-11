@@ -7,9 +7,17 @@ import {
   ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
+  ValueTransformer,
 } from 'typeorm';
 import { randomUUID } from 'crypto';
 import { StrengthActivityExercise } from './strength-activity-exercise.entity';
+
+/** Postgres returns `numeric` as a string – map it to a number (null stays null). */
+export const numericColumnTransformer: ValueTransformer = {
+  to: (value: number | null | undefined) => value,
+  from: (value: string | number | null) =>
+    value === null || value === undefined ? null : Number(value),
+};
 
 @Entity('strength_set')
 export class StrengthSet {
@@ -25,11 +33,19 @@ export class StrengthSet {
   @Column({ default: false })
   done!: boolean;
 
-  @Column()
-  weight!: string;
+  /** Kilograms, max 2 decimals (supports 1.25 kg plates). Null until entered. */
+  @Column({
+    type: 'numeric',
+    precision: 6,
+    scale: 2,
+    nullable: true,
+    transformer: numericColumnTransformer,
+  })
+  weight!: number | null;
 
-  @Column()
-  reps!: string;
+  /** Performed reps – always an exact number. Null until entered. */
+  @Column({ type: 'int', nullable: true })
+  reps!: number | null;
 
   @ManyToOne(
     () => StrengthActivityExercise,
@@ -39,10 +55,10 @@ export class StrengthSet {
   @JoinColumn({ name: 'activityExerciseId' })
   activityExercise!: StrengthActivityExercise;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt!: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt!: Date;
 
   @BeforeInsert()

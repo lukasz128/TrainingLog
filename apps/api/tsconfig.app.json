@@ -3,16 +3,19 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "target": "es2021",
     "moduleResolution": "node"
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "../../libs/api/auth/src/lib/auth.controller.ts",
+    "../../libs/api/auth/src/lib/auth.entity.ts",
+    "../../libs/api/auth/src/lib/auth.module.ts",
+    "../../libs/api/auth/src/lib/auth.service.ts",
+    "../../libs/api/auth/src/lib/constants.ts"
   ],
   "exclude": [
     "jest.config.ts",

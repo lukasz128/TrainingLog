@@ -6,9 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { RegisterCredentials } from 'auth/data-access';
 import { FilledButtonComponent, TextButtonComponent } from 'ui/button';
 import { LabelComponent } from 'ui/common';
-import { RegisterCredentials } from 'ui/data-access';
 import {
   FormErrorComponent,
   FormErrorTranslationPipe,

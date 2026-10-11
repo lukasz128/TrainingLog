@@ -28,7 +28,7 @@
       "register/ui": [
         "libs/client/user-managment/auth/register/ui/src/index.ts"
       ],
-      "ui/data-access": [
+      "auth/data-access": [
         "libs/client/user-managment/auth/data-access/src/index.ts"
       ],
       "ui/navbar": ["libs/ui/navbar/src/index.ts"],
@@ -42,6 +42,7 @@
       "menu": ["libs/client/menu/src/index.ts"],
       "strength": ["libs/client/activities/strength/src/index.ts"],
       "strength-service": ["libs/api/activities/strength/src/index.ts"],
+      "api-auth": ["libs/api/auth/src/index.ts"],
       "strength/data-access": [
         "libs/client/activities/strength/data-access/src/index.ts"
       ],

@@ -4,16 +4,16 @@ import { v4 as uuidv4 } from 'uuid';
 @Entity()
 export class User {
   @PrimaryColumn()
-  id: string;
+  id!: string;
 
   @Column({ unique: true })
-  email: string;
+  email!: string;
 
   @Column()
-  password: string;
+  password!: string;
 
   @Column({ default: true })
-  isActive: boolean;
+  isActive!: boolean;
 
   @BeforeInsert()
   generateUuid() {

@@ -1,3 +1,3 @@
-# ui/data-access
+# auth/data-access
 
-Secondary entry point of `ui`. It can be used by importing from `ui/data-access`.
+Secondary entry point of `ui`. It can be used by importing from `auth/data-access`.

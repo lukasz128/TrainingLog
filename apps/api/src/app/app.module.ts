@@ -1,17 +1,20 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule, User } from 'api-auth';
 import {
+  ActivityAlternativeGroup,
   StrengthActivity,
   StrengthActivityExercise,
   StrengthExerciseDictionary,
   StrengthModule,
   StrengthSet,
+  TemplateAlternativeGroup,
+  TemplateExercise,
+  WorkoutTemplate,
 } from 'strength-service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { User } from './features/auth/auth.entity';
-import { AuthModule } from './features/auth/auth.module';
 
 @Module({
   imports: [
@@ -29,6 +32,10 @@ import { AuthModule } from './features/auth/auth.module';
         StrengthActivityExercise,
         StrengthExerciseDictionary,
         StrengthSet,
+        WorkoutTemplate,
+        TemplateExercise,
+        TemplateAlternativeGroup,
+        ActivityAlternativeGroup,
       ],
       synchronize: true,
       autoLoadEntities: true,
