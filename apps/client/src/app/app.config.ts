@@ -1,4 +1,4 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
@@ -9,6 +9,7 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import { provideRouter, RouteReuseStrategy } from '@angular/router';
+import { authInterceptor } from 'auth/data-access';
 import { ENVIRONMENT_CONFIG } from 'common';
 import { environment } from '../environments/environment';
 import { appRoutes } from './app.routes';
@@ -21,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(appRoutes),
     { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy },
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     { provide: ENVIRONMENT_CONFIG, useValue: environment },
   ],
 };

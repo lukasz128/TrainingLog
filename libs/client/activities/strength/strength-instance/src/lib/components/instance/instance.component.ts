@@ -19,6 +19,7 @@ import { ExerciseItemComponent } from '../exercise-item/exercise-item.component'
 import { ExerciseLinkingComponent } from '../exercise-linking/exercise-linking.component';
 import { ExerciseSheetComponent } from '../exercise-sheet/exercise-sheet.component';
 import { TrainingPanelComponent } from '../training-panel/training-panel.component';
+import { HeaderComponent } from 'strength/ui';
 
 @Component({
   selector: 'strength-instance',
@@ -31,6 +32,7 @@ import { TrainingPanelComponent } from '../training-panel/training-panel.compone
     TrainingPanelComponent,
     BottomSheetComponent,
     RippleDirective,
+    HeaderComponent,
   ],
   templateUrl: './instance.component.html',
   styleUrl: './instance.component.scss',

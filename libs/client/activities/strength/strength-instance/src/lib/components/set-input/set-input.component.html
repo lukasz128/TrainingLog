@@ -1,17 +1,25 @@
-<input
-  #inputElement
-  class="strength-set-input__control reset-input"
-  [id]="id()"
-  [value]="inputValue"
-  [attr.aria-label]="ariaLabel()"
-  [attr.inputmode]="inputMode()"
-  [disabled]="isDisabled"
-  (input)="updateValue($any($event.target).value)"
-  (blur)="emitTouchEvent()"
-/>
-
-@if (suffix()) {
-  <span class="strength-set-input__suffix" aria-hidden="true">
-    {{ suffix() }}
-  </span>
+@if (label()) {
+  <label [for]="id()" class="label">
+    {{ label() }}
+  </label>
 }
+<div class="input">
+  <input
+    #inputElement
+    class="strength-set-input__control reset-input"
+    [id]="id()"
+    [value]="inputValue"
+    [attr.aria-label]="ariaLabel()"
+    [attr.inputmode]="inputMode()"
+    [disabled]="isDisabled"
+    [style]="customStyle()"
+    (input)="updateValue($any($event.target).value)"
+    (blur)="emitTouchEvent()"
+  />
+
+  @if (suffix()) {
+    <span class="strength-set-input__suffix" aria-hidden="true">
+      {{ suffix() }}
+    </span>
+  }
+</div>

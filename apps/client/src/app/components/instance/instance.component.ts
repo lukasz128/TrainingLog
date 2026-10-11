@@ -31,7 +31,6 @@ import { NAVBAR_ITEMS_TOKEN, NavbarComponent, NavbarItem } from 'ui/navbar';
 
         return computed(() => {
           const activeActivity = activityManager.activeActivity();
-          console.log({ activeActivity });
 
           const items: NavbarItem[] = [
             {

@@ -66,5 +66,74 @@ const ValidTemplate = (args: Story) => {
   };
 };
 
+const OutlineAppearanceTemplate = (args: Story) => {
+  return {
+    props: {
+      ...args,
+      formControl: new FormControl('example', {
+        validators: [Validators.required, Validators.email],
+      }),
+    },
+    template: `
+      <ui-form-field appearance="outline">
+        <ui-label>email</ui-label> 
+
+        @if(formControl.invalid && formControl.touched) {
+          <ui-form-error> field is required </ui-form-error>
+        }
+
+        <input uiInput [formControl]="formControl" placeholder="Enter the email" />
+      </ui-form-field>
+    `,
+  };
+};
+
+const TextareaFillTemplate = (args: Story) => {
+  return {
+    props: {
+      ...args,
+      formControl: new FormControl('example', {
+        validators: [Validators.required],
+      }),
+    },
+    template: `
+      <ui-form-field appearance="fill">
+        <ui-label>Description</ui-label> 
+
+        @if(formControl.invalid && formControl.touched) {
+          <ui-form-error> field is required </ui-form-error>
+        }
+
+        <textarea uiInput [formControl]="formControl" rows="5"  placeholder="Enter the description"></textarea>
+      </ui-form-field>
+    `,
+  };
+};
+
+const TextareaOutlineTemplate = (args: Story) => {
+  return {
+    props: {
+      ...args,
+      formControl: new FormControl('example', {
+        validators: [Validators.required],
+      }),
+    },
+    template: `
+      <ui-form-field appearance="outline">
+        <ui-label>Description</ui-label> 
+
+        @if(formControl.invalid && formControl.touched) {
+          <ui-form-error> field is required </ui-form-error>
+        }
+
+        <textarea uiInput [formControl]="formControl" rows="5"  placeholder="Enter the description"></textarea>
+      </ui-form-field>
+    `,
+  };
+};
+
 export const Primary = PrimaryTemplate.bind({});
 export const Valid = ValidTemplate.bind({});
+export const Outline = OutlineAppearanceTemplate.bind({});
+export const TextareaFill = TextareaFillTemplate.bind({});
+export const TextareaOutline = TextareaOutlineTemplate.bind({});

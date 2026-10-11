@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+
 import { User } from './auth.entity';
 import { LoginCredentials, RegisterCredentials } from './auth.types';
 
@@ -30,5 +31,10 @@ export class AuthService {
     const user = this.usersRepository.create({ email, password });
 
     await this.usersRepository.save(user);
+  }
+
+  async getAuthenticatedUser() {
+    const value = null;
+    return value;
   }
 }

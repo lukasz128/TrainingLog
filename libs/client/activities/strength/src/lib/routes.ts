@@ -39,6 +39,15 @@ export const routes = [
         },
       },
       {
+        path: 'template',
+        loadChildren: () =>
+          import('strength/strength-template-creator').then((m) => m.router),
+        resolve: {
+          mainHeaderVisibility: mainHeaderVisibilitySetterResolver(false),
+          mainNavbarVisibility: mainNavbarVisibilitySetterResolver(false),
+        },
+      },
+      {
         path: ':id',
         loadComponent: () =>
           import('strength/strength-instance').then((c) => c.InstanceComponent),

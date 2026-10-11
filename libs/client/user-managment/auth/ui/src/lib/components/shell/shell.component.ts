@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthHttpService } from 'ui/data-access';
+import { AuthHttpService } from 'auth/data-access';
 
 @Component({
   selector: 'auth-shell',

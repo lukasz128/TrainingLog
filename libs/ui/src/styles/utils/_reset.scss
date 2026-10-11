@@ -25,3 +25,18 @@
     outline-offset: 2px;
   }
 }
+
+.reset-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font: inherit;
+  color: inherit;
+
+  resize: none;
+}

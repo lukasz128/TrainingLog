@@ -49,6 +49,15 @@ const iconsStore = {
   more: {
     path: BASE_PATH_URL + 'more.svg',
   },
+  plus: {
+    path: BASE_PATH_URL + 'plus.svg',
+  },
+  bin: {
+    path: BASE_PATH_URL + 'bin.svg',
+  },
+  'drag-indicator': {
+    path: BASE_PATH_URL + 'drag-indicator.svg',
+  },
 } satisfies IconStore;
 
 export const ICON_STORE = new InjectionToken<IconStore>('ICON STORE', {

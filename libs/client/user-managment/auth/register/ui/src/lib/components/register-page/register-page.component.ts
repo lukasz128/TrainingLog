@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthHttpService, RegisterCredentials } from 'auth/data-access';
 import { ContentContainerComponent } from 'auth/ui';
-import { AuthHttpService, RegisterCredentials } from 'ui/data-access';
 import { RegisterFormComponent } from '../register-form/register-form.component';
 
 @Component({

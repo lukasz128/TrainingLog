@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import {
   Directive,
   ElementRef,
@@ -7,7 +6,7 @@ import {
   OnInit,
   Renderer2,
 } from '@angular/core';
-import { defer, EMPTY, take, tap } from 'rxjs';
+import { defer, tap } from 'rxjs';
 import { IconCacheService } from '../../data-access/icon-cache.service';
 import { AvailableIcon } from '../../data-access/icon-store';
 
@@ -17,7 +16,6 @@ import { AvailableIcon } from '../../data-access/icon-store';
 })
 export class IconDirective implements OnInit {
   private readonly _iconCache = inject(IconCacheService);
-  private readonly _http = inject(HttpClient);
   private readonly _elementRef = inject(ElementRef);
   private readonly _renderer = inject(Renderer2);
 
@@ -27,17 +25,12 @@ export class IconDirective implements OnInit {
   private readonly _fetchIcon$ = defer(() => {
     const icon = this.icon();
     const requestedIcon = this._iconCache.getIconBy(icon);
-    if (requestedIcon === undefined) {
-      console.error(`Provided icon ${icon} doesn't exists`);
-      return EMPTY;
-    }
 
-    return this._http.get(requestedIcon.path, { responseType: 'text' }).pipe(
+    return requestedIcon.pipe(
       tap({
-        next: (svgElement) => this._renderIcon(svgElement, requestedIcon.path),
+        next: ({ svg, path }) => this._renderIcon(svg, path),
         error: (err) => console.error(`Couldn't load icon ${icon}`, err),
       }),
-      take(1),
     );
   });
 

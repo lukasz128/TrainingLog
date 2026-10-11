@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { randomUUID } from 'crypto';
 import { StrengthActivityExercise } from './strength-activity-exercise.entity';
+import { TemplateExercise } from './template-exercise.entity';
 
 @Entity('strength_exercise_dictionary')
 export class StrengthExerciseDictionary {
@@ -27,10 +28,16 @@ export class StrengthExerciseDictionary {
   )
   activityExercises!: StrengthActivityExercise[];
 
-  @CreateDateColumn()
+  @OneToMany(
+    () => TemplateExercise,
+    (templateExercise) => templateExercise.exercise,
+  )
+  templateExercises!: TemplateExercise[];
+
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt!: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt!: Date;
 
   @BeforeInsert()

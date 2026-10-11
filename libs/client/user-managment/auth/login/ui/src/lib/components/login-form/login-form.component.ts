@@ -6,10 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { LoginCredentials } from 'auth/data-access';
 import { ENVIRONMENT_CONFIG } from 'common';
 import { FilledButtonComponent, TextButtonComponent } from 'ui/button';
 import { LabelComponent } from 'ui/common';
-import { LoginCredentials } from 'ui/data-access';
 import {
   FormErrorComponent,
   FormErrorTranslationPipe,

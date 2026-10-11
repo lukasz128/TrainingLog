@@ -1,0 +1,26 @@
+<ui-form-field appearance="outline">
+  <ui-label>Exercise name</ui-label>
+  <input uiInput [formControl]="group().controls.exercise" />
+</ui-form-field>
+
+<div class="set-and-rep flex-horizontal-center">
+  <ui-form-field appearance="outline">
+    <ui-label>Sets</ui-label>
+    <input uiInput [formControl]="group().controls.sets" />
+  </ui-form-field>
+
+  <ui-form-field appearance="outline">
+    <ui-label>Target Reps</ui-label>
+    <input uiInput [formControl]="group().controls.reps" />
+  </ui-form-field>
+
+  <ui-form-field appearance="outline">
+    <ui-label>Tempo</ui-label>
+    <input uiInput [formControl]="group().controls.tempo" />
+  </ui-form-field>
+</div>
+
+<ui-form-field appearance="outline">
+  <ui-label>Note</ui-label>
+  <textarea uiInput rows="4" [formControl]="group().controls.note"></textarea>
+</ui-form-field>

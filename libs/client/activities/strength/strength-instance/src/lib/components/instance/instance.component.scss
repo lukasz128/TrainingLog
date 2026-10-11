@@ -4,39 +4,6 @@
   flex-direction: column;
   overflow: hidden;
 
-  .header {
-    color: var(--color-white);
-    background: var(--color-primary);
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-
-    padding-top: calc(var(--spacing-safe-top) + 5px);
-    padding-bottom: 5px;
-
-    &__content {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    & h1 {
-      font-size: 18px;
-      font-weight: 900;
-      margin: 0;
-    }
-
-    & p {
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--color-accent-400);
-      margin: 0;
-    }
-  }
-
   .main {
     flex: 1;
     overflow-y: auto;

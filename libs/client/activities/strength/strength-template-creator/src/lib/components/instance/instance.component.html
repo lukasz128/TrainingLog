@@ -1,0 +1,159 @@
+<strength-header title="Create Template">
+  <ng-container slot="left">
+    <button ui-icon-btn type="button" (click)="goBack()" aria-label="Go back">
+      <i uiIcon="arrow-left" size="20px"></i>
+    </button>
+  </ng-container>
+
+  <ng-container slot="right">
+    <button type="button" ui-text-btn (click)="save()">Save</button>
+  </ng-container>
+</strength-header>
+
+<main class="main">
+  <form [formGroup]="form" class="form">
+    <ui-form-field appearance="outline">
+      <ui-label>Template Name</ui-label>
+      <input uiInput [formControl]="form.controls.name" />
+    </ui-form-field>
+
+    <ui-form-field appearance="outline">
+      <ui-label>Description / Notes</ui-label>
+      <textarea
+        uiInput
+        rows="5"
+        [formControl]="form.controls.description"
+      ></textarea>
+    </ui-form-field>
+
+    <div class="divider"></div>
+
+    <ion-reorder-group
+      [disabled]="false"
+      (ionReorderEnd)="handleReorderEnd($any($event))"
+      (ionReorderStart)="closeAllExercises()"
+    >
+      @for (
+        exercise of form.controls.exercises.controls;
+        track exercise;
+        let index = $index
+      ) {
+        @if (isAlternative(exercise)) {
+          <ion-item>
+            <ui-accordion expanded disabled hiddenToggleExpandBtn>
+              <ng-container slot="header-left">
+                <ion-reorder>
+                  <button type="button" ui-icon-btn>
+                    <i uiIcon="drag-indicator" size="20px"></i>
+                  </button>
+                </ion-reorder>
+
+                <input
+                  type="text"
+                  [formControl]="exercise.controls.name"
+                  placeholder="Set of alternative exercises"
+                  class="reset-input clickable alternative-exercise-name-input"
+                />
+              </ng-container>
+
+              <ng-container slot="header-right">
+                <button
+                  type="button"
+                  ui-icon-btn
+                  class="delete-exercise-btn clickable"
+                  (click)="deleteAlternativeExercise(exercise, -1)"
+                >
+                  <i uiIcon="bin" size="15px"></i>
+                </button>
+
+                <button
+                  type="button"
+                  ui-icon-btn
+                  class="clickable"
+                  (click)="addAlternativeExerciseFor(exercise)"
+                >
+                  <i uiIcon="plus" size="15px"></i>
+                </button>
+              </ng-container>
+
+              @for (
+                alternativeExercise of exercise.controls.exercises.controls;
+                track alternativeExercise
+              ) {
+                <ui-accordion>
+                  <ng-container slot="header-left">
+                    <h3 class="exercise-title text-truncate">
+                      {{
+                        alternativeExercise.controls.exercise.value ||
+                          'Exercise'
+                      }}
+                    </h3>
+                  </ng-container>
+
+                  <ng-container slot="header-right">
+                    <button
+                      type="button"
+                      ui-icon-btn
+                      class="delete-exercise-btn"
+                      (click)="deleteAlternativeExercise(exercise, index)"
+                    >
+                      <i uiIcon="bin" size="15px"></i>
+                    </button>
+                  </ng-container>
+
+                  <ng-container>
+                    <strength-exercise-template-form
+                      [group]="alternativeExercise"
+                    />
+                  </ng-container>
+                </ui-accordion>
+              }
+            </ui-accordion>
+          </ion-item>
+        }
+
+        @if (isCommon(exercise)) {
+          <ion-item>
+            <ui-accordion [name]="exerciseAccordionName">
+              <ng-container slot="header-left">
+                <ion-reorder>
+                  <button type="button" ui-icon-btn>
+                    <i uiIcon="drag-indicator" size="20px"></i>
+                  </button>
+                </ion-reorder>
+                <h3 class="exercise-title text-truncate">
+                  {{ exercise.controls.exercise.value || 'Exercise' }}
+                </h3>
+              </ng-container>
+
+              <ng-container slot="header-right">
+                <button
+                  type="button"
+                  ui-icon-btn
+                  class="delete-exercise-btn"
+                  (click)="deleteExercise(index)"
+                >
+                  <i uiIcon="bin" size="15px"></i>
+                </button>
+              </ng-container>
+
+              <ng-container>
+                <strength-exercise-template-form [group]="exercise" />
+              </ng-container>
+            </ui-accordion>
+          </ion-item>
+        }
+      }
+    </ion-reorder-group>
+
+    <div class="action-btns-container">
+      <button type="button" ui-filled-btn (click)="addExercise()">
+        Add Exercise
+      </button>
+
+      <button type="button" ui-filled-btn (click)="addAlternativeExerciseFor()">
+        Add alternative exercise
+      </button>
+    </div>
+  </form>
+</main>

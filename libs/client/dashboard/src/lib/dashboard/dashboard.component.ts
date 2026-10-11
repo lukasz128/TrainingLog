@@ -1,4 +1,3 @@
-import { NgOptimizedImage } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,7 +6,6 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ActivityManagerService } from 'activity';
-import { ActivitesTableComponent } from 'dashboard/ui';
 import { InformationBannerComponent } from 'ui/banner';
 import { FilledButtonComponent } from 'ui/button';
 import { shortListActivities } from '../../../data-access/src/lib/activities.mocks';
@@ -15,11 +13,10 @@ import { shortListActivities } from '../../../data-access/src/lib/activities.moc
 @Component({
   selector: 'dashboard-dashboard',
   imports: [
-    NgOptimizedImage,
     InformationBannerComponent,
     FilledButtonComponent,
     RouterLink,
-    ActivitesTableComponent,
+    // ActivitesTableComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',

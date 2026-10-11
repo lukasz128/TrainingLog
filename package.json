@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "db:seed:strength": "node apps/api/scripts/seed-strength-mock-data.cjs",
+    "db:reset:strength": "node apps/api/scripts/seed-strength-mock-data.cjs --reset",
     "start:ios": "npx cap run ios -l",
     "start": "npx nx serve client --port 3000 --host 0.0.0.0",
     "storybook:ui": "npx nx storybook ui"
@@ -80,6 +81,7 @@
     "@capacitor/android": "^8.0.0",
     "@capacitor/core": "^8.0.0",
     "@capacitor/ios": "^8.0.0",
+    "@ionic/angular": "^9.0.2",
     "@ionic/pwa-elements": "^3.4.0",
     "@nestjs/common": "^11.0.0",
     "@nestjs/config": "^4.0.2",

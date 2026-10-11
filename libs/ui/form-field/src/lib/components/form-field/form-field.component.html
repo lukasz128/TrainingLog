@@ -1,20 +1,17 @@
 @if (isLabelChildActive()) {
-  @let isError = isErrorActive();
-  <header class="">
+  <header>
     <label [for]="inputId">
       <ng-content select="ui-label" />
 
-      @if (isError) {
+      @if (isRequired()) {
         <span animate.enter="enter-animation"> &nbsp;* </span>
       }
     </label>
 
-    <!-- @if (isError) { -->
     <span animate.enter="enter-animation">
       <ng-content select="ui-form-error" />
     </span>
-    <!-- } -->
   </header>
 }
 
-<ng-content select="input[uiInput]" />
+<ng-content select="input[uiInput], textarea[uiInput]" />

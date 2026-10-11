@@ -85,7 +85,7 @@
   width: 100%;
 
   &-series {
-    &::ng-deep input {
+    &::ng-deep .input input {
       text-align: center;
     }
   }
